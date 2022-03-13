@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一个普通Coder的学习与日常</title>
+  
+  
+  <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://xianyanglin.github.io/"/>
+  <updated>2022-03-13T03:32:15.299Z</updated>
+  <id>https://xianyanglin.github.io/</id>
+  
+  <author>
+    <name>xyl</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>netty如何支持三种Reactor</title>
+    <link href="https://xianyanglin.github.io/2022/03/13/netty-ru-he-zhi-chi-san-chong-reactor/"/>
+    <id>https://xianyanglin.github.io/2022/03/13/netty-ru-he-zhi-chi-san-chong-reactor/</id>
+    <published>2022-03-13T01:25:00.000Z</published>
+    <updated>2022-03-13T03:32:15.299Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;什么是Reactor及三种版本&quot;&gt;&lt;a href=&quot;#什么是Reactor及三种版本&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+</feed>
