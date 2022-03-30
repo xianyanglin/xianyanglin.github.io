@@ -4,6 +4,206 @@
   
     
     <entry>
+      <title>服务网格</title>
+      <link href="/2022/03/24/fu-wu-wang-ge/"/>
+      <url>/2022/03/24/fu-wu-wang-ge/</url>
+      
+        <content type="html"><![CDATA[<h3 id="什么是服务网格？"><a href="#什么是服务网格？" class="headerlink" title="什么是服务网格？"></a>什么是服务网格？</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> ServiceMesh </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ServiceMesh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kubernetes的设计解读</title>
+      <link href="/2022/03/20/kubernetes-de-she-ji-jie-du/"/>
+      <url>/2022/03/20/kubernetes-de-she-ji-jie-du/</url>
+      
+        <content type="html"><![CDATA[<h3 id="pod-设计解读"><a href="#pod-设计解读" class="headerlink" title="pod 设计解读"></a>pod 设计解读</h3><p>在kubernetes中，创建、调度、管理的最小单位是pod</p><ul><li>pod是IP等网络资源的分配的基本单位，这个IP及其对应的network namespace是由pod里面的容器共享的</li><li>pod内的所有容器页共享volume。当一个volume被挂载在同属同一个pod的多个Docker容器的文件系统</li><li>IPC namespace 即同一个pod内的应用容器能够使用System V IPC或者POSIX消息队列进行通信</li><li>UTS namespace 即同一个pod内的应用容器共享主机名</li></ul><p>1.label 和label selector与pod协作</p><p>2.pod的现状和未来</p><ul><li>资源共享和通信</li><li>集中式管理，指pod内的所有容器资源</li></ul><p>3.pod内的容器网络与通信</p><p>​    通过pause容器进行pod内的容器网络与通信</p><ul><li><p>replication controller设计解读</p><p>replication controller在设计上依然体现出了”旁路控制”的思想，为每个pod “外挂”了一个控制器进程，从而避免了健康检查组件成为性能瓶颈</p><p>replication controller只能与重启策略为Always的pod进行协作</p><p>replication controller的经典场景:</p><ul><li>重调度</li><li>弹性伸缩</li><li>滚动更新</li><li>多版本应用release追踪</li></ul></li><li><p>service的设计解读</p><p>service通过标签label将流量负载均衡到对应label标签的pod上</p><ul><li><p>service工作原理</p><p>Kubernetes集群上的每个节点都运行着一个服务代理(service proxy),它是负责实现service的主要组件</p><p>kube proxy两种工作模式：</p><ul><li><p>userspace模式</p><p>对于每个service kube-proxy都会在宿主机监听一个端口与这个service对应起来，并在宿主机上建立起iptables规则，将service IP:service port的流量重定向到上述端口</p></li><li><p>iptables模式</p><p>iptables模式下的kube-proxy将负责创建和维护iptables的路由规则，其余工作交由内核态的iptables完成</p></li></ul></li><li><p>service的自发现机制</p><ul><li>环境变量方式</li><li>DNS方式(mysvc.myns)</li></ul></li><li><p>service 外部可路由性设计</p><ul><li>NodePort</li><li>LoadBalancer</li><li>external ip</li></ul></li></ul></li><li><p>新一代版本控制器 replica set</p><p>replica set 用于保证label selector 匹配的pod数量维持在期望状态</p><p>replicat set 与 replication controller 的区别是：replication controller只支持等值匹配   replicat set支持基于子集的查询</p></li><li><p>Deployment</p><p>Deployment多用于pod 和replica set 的更新，可以方便地跟踪观察其所属的relica set或者pod的数量以及状态变化</p></li><li><p>DaemonSet</p></li><li><p>ConfigMap</p></li><li><p>Job</p></li></ul><h3 id="Kubernetes核心-组件解读"><a href="#Kubernetes核心-组件解读" class="headerlink" title="Kubernetes核心 组件解读"></a>Kubernetes核心 组件解读</h3><h4 id="Master节点："><a href="#Master节点：" class="headerlink" title="Master节点："></a>Master节点：</h4><h5 id="APIServer"><a href="#APIServer" class="headerlink" title="APIServer:"></a>APIServer:</h5><p>Kubernetes APIserver负责对外提供Kubernetes API服务，它运行在Kubernetes的管理节点-Master节点</p><ul><li><p>APIServer的职能:</p><ul><li>对外提供RESTful的管理接口</li><li>配置Kubernetes的资源对象</li><li>提供可定制的功能性插件</li></ul></li><li><p>APIServer启动过程:</p><p>1.新建APIServer 定义一个APIServer所需的关键资源</p><p>2.接受用户命令行输入，为上述各参数赋值</p><p>3.解析并格式化用户传入的参数</p><p>4.初始化log配置</p><p>5.启动运行一个全新的APIServer</p></li><li><p>APIServer对etcd的封装：</p><p>Kubernetes使用etcd作为后台存储解决方案，而APIServer则基于etcd实现了一套RESTful API，用于操作存储在etcd中的Kubernetes对象实例</p></li><li><p>APIServer如何保证API操作的原子性:</p><p>Kubernetes的资源对象都设置了resourceVersion作为其元数据的一部分，APIServer以此保证资源对象操作的原子性</p></li></ul><h5 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler:"></a>Scheduler:</h5><p>根据特定的调度算法将pod调度到指定的工作节点上，这一过程称作绑定</p><ul><li><p>Scheduler的数据采集模型</p><p>Scheduler定时向APIServer获取各种各样它需要的数据，为了减少轮询时APIServer带来的额外开销，对于感兴趣的资源设置了本地缓存机制</p></li><li><p>Scheduler调度算法</p><p>Kubernetes中的调度策略分为两个阶段：Predicates , Priorites</p><ul><li>Predicates :回答能不能</li><li>Priorites：在Predicates基础上回答匹配度</li></ul></li><li><p>controller manager</p><p>kubernetes controller manager 运行在集群的master节点上，管理着集群中的各种控制器</p></li></ul><h4 id="工作节点："><a href="#工作节点：" class="headerlink" title="工作节点："></a>工作节点：</h4><h5 id="cAdvisor"><a href="#cAdvisor" class="headerlink" title="cAdvisor:"></a>cAdvisor:</h5><p>获取当前工作节点的宿主机信息</p><h5 id="kubelet"><a href="#kubelet" class="headerlink" title="kubelet :"></a>kubelet :</h5><p>kubelet组件 是Kubenetes集群工作节点上最重要的组件进程，它负责管理和维护在这台主机上运行着的所有容器。本质上它的工作可以归纳为使得pod的运行状态（status）与它的期待值（spec）一致。</p><p>Kubelet如何同步工作节点状态：</p><p>1.kubelet调用APIServer API向etcd获取包含当前工作节点状态信息的node 对象，查询的键值就是kubelet所在工作节点的主机名，</p><p>2.调用cAdvisor客户端API获取当前工作节点的宿主机信息，更新前面步骤获取到的node对象</p><p>3.kubelet再次调用APIServer API将上述更新持久化到etcd中</p><h5 id="kube-proxy"><a href="#kube-proxy" class="headerlink" title="kube-proxy :"></a>kube-proxy :</h5><p>Kubernetes基于service、endpoint等概念为用户提供了一种服务发现和反向代理服务，而kube-proxy正是这种服务的底层实现机制。</p><p>服务发现实现：</p><p>Kube-proxy使用etcd的watch机制，监控集群中service和endpoint对象数据的动态变化，并且维护一个从service到endpoint的映射关系，从而保证了后端pod的IP变化不会对访问者造成影响。</p><p>kube-proxy主要有两种工作模式: userspace 和 iptables</p><p>userspace模式：</p><p>iptables模式：</p><p>iptables模式下的proxier值负责在发现变更时更新iptables规则，而不再为每个service打开一个本地端口，所有流量转发到pod的工作将交由内核态的iptables完成。</p><h3 id="核心组件协作流程："><a href="#核心组件协作流程：" class="headerlink" title="核心组件协作流程："></a>核心组件协作流程：</h3><h4 id="创建pod"><a href="#创建pod" class="headerlink" title="创建pod"></a>创建pod</h4><p>当客户端发起一个创建pod的请求后，kubectl向APIServer的/pods端点发送一个HTTP POST请求，请求的内容即客户端提供的pod资源配置文件</p><p>APIServer收到该REST API请求后会进行一系列的验证操作，包括用户认证，授权和资源配额控制等。验证通过后，APIServer调用etcd的存储接口在后台数据库中创建一个pod对象。</p><p>Scheduler使用APIServer 的API  定期从etcd获取或者监控系统中可用的工作节点列表和待调度pod , 并使用调度策略为pod选择一个运行的工作节点，这个过程叫绑定</p><p>绑定完成后，scheduler会调用APIServer的API在etcd中创建bingding对象，描述在一个工作节点上绑定运行的所有pod信息。同时kubelet会监听APIServer上pod的更新，如果发现有pod更新信息，则会自动在podWorker的同步周期中更新对应的pod</p><p>这正是Kubernetes实现中 “一切皆资源”的体现，即所有实体对象，消息都是作为etcd里保存起来的一种资源对待，其他所有组件间协作都通过基于APIServer的数据交换，组件间一种松耦合的状态。</p><h4 id="创建service"><a href="#创建service" class="headerlink" title="创建service"></a>创建service</h4><p>当客户端发起一个创建service的请求后，kubectl向APIServer的/service端点发送一个HTTP POST请求，请求的内容即客户端提供的service资源配置文件。</p><p>同样，APIServer收到该REST API请求后会进行一系列的验证操作。验证通过后，APIServer调用etcd的存储接口在后台数据库中创建一个service对象</p><p>kube-proxy会定期调用APIServer的API获取期望service对象列表，然后再遍历期望service对象列表。对每个service调用APIServer的API获取对应的pod集的信息，并从pod信息列表中提取pod IP和容器端口号封装成endpoint对象，然后调用APIServer的API在etcd中创建对象</p><p>在```userspace kube-proxy模式``下：</p><p>对于每个新建的service，kube-proxy会为其在本地随机分配一个随机端口号，并相应地创建一个ProxySocket，随后使用iptables工具在宿主机上建立一条从ServiceProxy到ProxySocket的了链路。同时，kube-proxy后台启动一个协程监听ProxySocket上的数据并根据endpoint实例的信息将来自客户端的请求转发给相应的service后端pod.</p><p>在<code>iptables kube-proxy模式</code>下：</p><p>对于每个新建的service，kube-proxy会为其创建对应的iptables。来自客户端的请求将由内核态iptables负责转发给service后端pod完成</p><p>最后，kube-proxy会定期调用APIService的API获取期望service和endpoint列表并与本地的service 和endpoint实例同步。</p><h3 id="Kubernetes-网络核心原理"><a href="#Kubernetes-网络核心原理" class="headerlink" title="Kubernetes 网络核心原理"></a>Kubernetes 网络核心原理</h3><h4 id="单pod单IP模型"><a href="#单pod单IP模型" class="headerlink" title="单pod单IP模型"></a>单pod单IP模型</h4><p>Kubernetes为每一个pod分配一个私有网络地址段的IP地址，通过该IP地址，pod能够跨网络与其他物理机，虚拟机或容器进行通信，pod内的容器全部共享这个pod的容器配置，彼此之间使用localhost通信。</p><h4 id="单pod单IP实现原理"><a href="#单pod单IP实现原理" class="headerlink" title="单pod单IP实现原理"></a>单pod单IP实现原理</h4><p>在每一个pod中有一个网络容器，该容器先于pod内所有用户容器被创建，并且拥有该pod的网络namespace，pod的其他用户容器使用Docker的–net=container:<id>选项加入该网络的namespace，这样就实现了pod内所有容器对于网络栈的共享</id></p><h3 id="Kubernetes-高级实践"><a href="#Kubernetes-高级实践" class="headerlink" title="Kubernetes 高级实践"></a>Kubernetes 高级实践</h3><p>应用健康检查:</p><ul><li><p>进程级健康检查</p></li><li><p>业务级健康检查:</p><p>活性探针：</p><ul><li>HTTP Get: kubelet 将调用容器内Web应用的web hook 如果返回的状态为200 和 399 之间则成功</li><li>Container Exec: kubelet 将在用户容器内执行一次命令，返回码为0 则正常</li><li>TCP Socket : 尝试建立socker,但目前尚未支持</li></ul><p>如果readiness probe的健康检查结果是fail kubelet并不会杀死容器进程，而只是将该容器所属的pod 从endpoint列表删除</p></li></ul><h3 id="Kubernetes-未来动向"><a href="#Kubernetes-未来动向" class="headerlink" title="Kubernetes 未来动向"></a>Kubernetes 未来动向</h3><p>坚持走更加开放的道路</p><p>汲取Borg与Omega的优秀设计思想</p><p>致力于树立行业标准</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kubernetes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kubernetes </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kafka核心技术</title>
+      <link href="/2022/03/20/kafka-he-xin-ji-zhu/"/>
+      <url>/2022/03/20/kafka-he-xin-ji-zhu/</url>
+      
+        <content type="html"><![CDATA[<h3 id="生产者消息分区机制原理剖析"><a href="#生产者消息分区机制原理剖析" class="headerlink" title="生产者消息分区机制原理剖析"></a>生产者消息分区机制原理剖析</h3><p>Kafka的三级结构：主题 - 分区 - 消息</p><ul><li>为什么要分区？</li></ul><p>分区的作用是提供负载均衡的能力，不同的分区分布在不同的机器节点上，数据的读写都是针对分区的粒度进行。可通过增加机器来增加吞吐量</p><ul><li>都有哪些分区策略</li></ul><p>1、轮训策略</p><p>2、随机策略</p><p>3、消息键保序策略</p><p>分区是实现负载均衡以及高吞吐量的关键，故在生产者这一端就要仔细盘算合适的分区策略，避免造成数据倾斜，使得某些分区成为性能瓶颈。</p><h3 id="Kafka副本机制详解"><a href="#Kafka副本机制详解" class="headerlink" title="Kafka副本机制详解"></a>Kafka副本机制详解</h3><p>Kafka副本机制的好处：</p><ul><li>提供数据冗余</li></ul><p>同一个分区下的所有副本保存有相同的消息序列，这些副本分散保存在不同的Broker上，从而能对抗部分Broker宕机带来的数据不可用</p><p>数据同步机制：</p><p>同个分区下的不同副本基于领导者的副本机制进行数据同步,从副本只负责同步数据，不负责对外的读写工作。</p><p>原因：</p><ul><li>方便实现“Read-your-writes”</li><li>方便实现单调读（Monotonic Reads）</li></ul><p>主从分区实现数据同步的保证：<em><strong>In-sync Replicas</strong></em>机制</p><ul><li>Broker 端参数 <em><strong>replica.lag.time.max.ms</strong></em> 参数值设置的是主从同步的最长间隔</li></ul><h3 id="Kafka为什么那么快"><a href="#Kafka为什么那么快" class="headerlink" title="Kafka为什么那么快"></a>Kafka为什么那么快</h3><ul><li>Kafka具有优秀的磁盘读写能力</li><li>批量量处理。合并小的请求，然后以流的方式进行交互，直顶网络上限。</li><li>请求采用多路复用的IO模型</li></ul><h3 id="Kafka请求是怎么处理"><a href="#Kafka请求是怎么处理" class="headerlink" title="Kafka请求是怎么处理"></a>Kafka请求是怎么处理</h3><p>Kafka在TCP的基础上封装了一组请求协议，PRODUCR 请求用于生产消息，FETCH请求用于消费消息，METADATA请求是用于请求Kafka元数据</p><p>Kafka使用的是<em><strong>Reactor</strong></em>模式处理请求。</p><p>Reactor模式是事件驱动架构的一种实现方式，特别适合用于处理多个客户端并发向服务端发送请求的场景。</p><p>client   —–&gt;  Reactor(Dispatcher) 公平分配  ——-&gt;read(网络线程池   ——&gt;共享请求队列   ——&gt;IO线程池  )   ——-&gt;decode  —–&gt; 网络线程池请求响应队列</p><h3 id="幂等生产者和事务生产者是一回事吗？-kafka如何做到消息不会丢失，也不会被重复发送"><a href="#幂等生产者和事务生产者是一回事吗？-kafka如何做到消息不会丢失，也不会被重复发送" class="headerlink" title="幂等生产者和事务生产者是一回事吗？(kafka如何做到消息不会丢失，也不会被重复发送)"></a>幂等生产者和事务生产者是一回事吗？(kafka如何做到消息不会丢失，也不会被重复发送)</h3><p>kafka如何做到消息不会丢失，也不会被重复发送?</p><p>Kafka提供消息不会丢失，但可能被重复发送的可靠性保障：</p><ul><li>避免重复生产</li></ul><p>1.创建幂等性Producer，当Producer发送了具有相同字段的消息之后，Broker会知道这些消息已经重复，并在后台进行舍弃。原理是就是经典的空间换时间的优化思想，Broker会在后台多保存一些字段，消息上报时会进行字段内容的核对。</p><p>幂等性 Producer的局限性：单分区幂等性、单会话幂等性</p><p>事务型 Producer:事务型 Producer 能够保证将消息原子性地写入到多个分区中。这批消息要么全部写入成功，要么全部失败。(类似于数据库的串行化)</p><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="生产者压缩算法"><a href="#生产者压缩算法" class="headerlink" title="生产者压缩算法"></a>生产者压缩算法</h3><ul><li>何时压缩：</li></ul><p>生产者端 和 Broker端</p><p>Broker指定的压缩算法与生产者不一样时，Broker端需要先解压再依据自己的算法算法压缩。</p><ul><li>何时解压</li></ul><p>在consumer端获取的消息中有该消息的压缩算法</p><h3 id="无消息丢失配置怎么实现"><a href="#无消息丢失配置怎么实现" class="headerlink" title="无消息丢失配置怎么实现"></a>无消息丢失配置怎么实现</h3><p>Kafka只对 “已提交的消息”的消息做有限度的持久保证。</p><ul><li>可在一个或若干个Broker成功接收并写入日志文件后，会告诉生产者已提交</li></ul><p>生产者程序丢失数据：Producer永远要使用带有回调通知的发送API</p><p>消费者程序丢失数据：维持先消费消息，再更新位移的顺序</p><p>还有一个解决办法是，多线程异步处理消费信息，Consumer 程序不要开启自动提交位移，而是要应用程序手动提交位移</p><p>总结：</p><ul><li>使用peoducer.send(msg,callback)</li><li>设置acks=all</li><li>设置retries为一个较大的值</li><li>设置unclean.leader.election.enable=false</li><li>设置replication.factor=3</li><li>设置min.insynnc.relicas&gt;1</li><li>确保replication.factor&gt;min.insynnc.relicas</li><li>确保消息消费完成再提交</li></ul><h3 id="客户端都有哪些不常见但是很高级的功能"><a href="#客户端都有哪些不常见但是很高级的功能" class="headerlink" title="客户端都有哪些不常见但是很高级的功能"></a>客户端都有哪些不常见但是很高级的功能</h3><p>Kafka 拦截器分为生产者拦截器和消费者拦截器</p><ul><li>kafka拦截器的使用场景</li></ul><p>Kafka 拦截器可以应用于包括客户端监控、端到端系统性能检测、消息审计等多种功能在内的场景</p><h3 id="Java生产者是如何管理TCP连接"><a href="#Java生产者是如何管理TCP连接" class="headerlink" title="Java生产者是如何管理TCP连接"></a>Java生产者是如何管理TCP连接</h3><ul><li>为何采用TCP？<ul><li>从社区的角度看，在开发客户端时能够利用TCP本身提供的一些高级特性：多路复用请求以及同时轮询多个连接的能力</li><li>目前已知的 HTTP 库在很多编程语言中都略显简陋</li></ul></li><li>TCP连接何时创建？<ul><li>TCP 连接是在创建 KafkaProducer 实例时建立的</li><li>一个是在更新元数据后</li><li>在消息发送时</li></ul></li><li>TCP连接何时关闭？<ul><li>用户主动关闭</li><li>Kafka自带关闭(TTL)</li></ul></li></ul><h3 id="Java-消费者如何管理TCP连接"><a href="#Java-消费者如何管理TCP连接" class="headerlink" title="Java 消费者如何管理TCP连接"></a>Java 消费者如何管理TCP连接</h3><ul><li>何时创建TCP连接？<ul><li>TCP连接是在调用KafkaConsumer.poll 方法时被创建的<ul><li>发起 FindCoordinator 请求时</li><li>连接协调者时</li><li>消费数据时</li></ul></li></ul></li><li>创建多少个 TCP 连接？<ul><li>确定协调者和获取集群元数据</li><li>连接协调者，令其执行组成员管理操作</li><li>执行实际的消息获取</li></ul></li><li>何时关闭连接？<ul><li>手动调用 KafkaConsumer.close() 方法，或者是执行 Kill 命令</li><li>Kafka 自动关闭，由消费者端参数 connection.max.idle.ms 控制的</li></ul></li></ul><h3 id="消费者组到底是什么"><a href="#消费者组到底是什么" class="headerlink" title="消费者组到底是什么?"></a>消费者组到底是什么?</h3><p>Consumer Group 是 Kafka 提供的可扩展且具有容错性的消费者机制</p><p>传统消息引擎模型：点对点模型和发布 / 订阅模型</p><p>点对点模型：消息一旦被消费，就会从队列中删除，而且只能被下游的一个consumer消费。</p><p>缺点：伸缩性（scalability）很差，因为下游的多个 Consumer 都要“抢”这个共享消息队列的消息</p><p>订阅模型: 允许消息被多个 Consumer 消费</p><p>缺点：每个订阅者都必须要订阅主题的所有分区。这种全量订阅的方式既不灵活，也会影响消息的真实投递效果</p><p><em><strong>Kafka 仅仅使用 Consumer Group 这一种机制，却同时实现了传统消息引擎系统的两大模型</strong></em></p><p><em><strong>Rebalance</strong></em> 本质上是一种协议，规定了一个 Consumer Group 下的所有 Consumer 如何达成一致，来分配订阅 Topic 的每个分区</p><p>触发重平衡的条件：</p><p>1.组员数发生变更</p><p>2.订阅主题数发生变更</p><p>3.订阅主题的分区数发生变更</p><h3 id="揭开神秘的“唯一主题”面纱"><a href="#揭开神秘的“唯一主题”面纱" class="headerlink" title="揭开神秘的“唯一主题”面纱"></a>揭开神秘的“唯一主题”面纱</h3><p>kafka自建位移主题保存consumer的消费位移</p><p>位移主题中的Key保存的内容格式：&lt;Group ID，主题名，分区号 &gt;</p><p>当 Kafka 集群中的第一个 Consumer 程序启动时，Kafka 会自动创建位移主题</p><p>如果位移主题是 Kafka 自动创建的，那么该主题的分区数是 50，副本数是 3</p><ul><li>位移主题何时提交？<ul><li>自动提交位移</li><li>手动提交位移</li></ul></li></ul><p>Kafka 提供了专门的后台线程定期地巡检待 Compact 的主题，看看是否存在满足条件的可删除数据</p><h3 id="消费组重平衡能避免吗"><a href="#消费组重平衡能避免吗" class="headerlink" title="消费组重平衡能避免吗 ?"></a>消费组重平衡能避免吗 ?</h3><p>原理：</p><p>同一个consumer Group下的所有consumer实例在协调者组件的帮助下完成订阅主题分区的分配</p><p>Broker在启动时会开启相应的Coordinator组件，Broker所属的Coordinator组件与其可能不在同一个节点上。</p><p>Kafka 为某个 Consumer Group 确定 Coordinator 所在的 Broker 的算法：</p><ul><li>确定由位移主题的哪个分区来保存该Group数据</li><li>找出该分区Leader副本所在的Broker,该Broker即为对应的Broker</li></ul><p>重平衡的弊端：</p><ul><li>Rebalance影响Consumer端的TPS，因为重平衡期间消费者不可用</li><li>Rebalance很慢，业务将长时间不可用</li></ul><p>在真实的业务场景中，很多Rebalance都是计划外的或者说是不必要的。</p><p>触发重平衡的条件：</p><p>1.组员数发生变更</p><p>2.订阅主题数发生变更</p><p>3.订阅主题的分区数发生变更</p><p>后两个都是运维层面的不可避免，但是组员数目可以避免。</p><p>避免方式:</p><ul><li>避免consumer未能及时发送心跳而导致被剔除</li><li>避免consumer消费时间过长</li></ul><h3 id="Kafka消息位移提交"><a href="#Kafka消息位移提交" class="headerlink" title="Kafka消息位移提交"></a>Kafka消息位移提交</h3><p>Consumer 需要为分配给它的每个分区提交各自的位移数据</p><p>位移提交的语义保障是由你来负责的，Kafka 只会“无脑”地接受你提交的位移</p><p>从用户的角度来说，位移提交分为自动提交和手动提交；从 Consumer 端的角度来说，位移提交分为同步提交和异步提交</p><p>Kafka提供的提交位移的方法：</p><ul><li>自动提交位移:</li></ul><p>可能会出现重复消费</p><ul><li><p>手动提交位移：</p><ul><li><p>同步提交位移，提交过程中，consumer会处于阻塞状态，知道远端的Broker返回提交结果</p></li><li><p>异步提交位移，异步提交过程失败，重试并没有意义 因为消费的位移已经不是最新值</p><p>所以实际实践需要commitAsync() 避免程序阻塞，Consumer 要关闭前，我们调用 commitSync() 方法执行同步阻塞式的位移提交。</p></li></ul></li><li><p>精细化管理位移</p></li></ul><h3 id="CommitFailedException异常怎么处理？"><a href="#CommitFailedException异常怎么处理？" class="headerlink" title="CommitFailedException异常怎么处理？"></a>CommitFailedException异常怎么处理？</h3><p>当消息处理的总时间超过预设的 max.poll.interval.ms 参数值时，Kafka Consumer 端会抛出 CommitFailedException 异常。</p><p>处理：</p><ul><li>缩短单条消息处理的时间</li><li>增加 Consumer 端允许下游系统消费一批消息的最大时长</li><li>减少下游系统一次性消费的消息总数</li><li>下游系统使用多线程来加速消费</li></ul><h3 id="多线程开发消费者实例"><a href="#多线程开发消费者实例" class="headerlink" title="多线程开发消费者实例"></a>多线程开发消费者实例</h3><ul><li><p>Kafka Java Consumer 设计原理</p><ul><li><p>Kafka Consumer 是双线程的设计，分为用户主线程和心跳线程</p></li><li><p>原因：</p><p>1.老版本consumer的每个实例都为所订阅的主题分区创建对应的消息获取线程，同时也是阻塞式的，Consumer 实例启动后，内部会创建很多阻塞式的消息获取迭代器，但在很多场景下，Consumer 端是有非阻塞需求的，社区为新版本设计了单线程+轮询的机制</p><p>2.单线程的设计能够简化 Consumer 端的设计。Consumer 获取到消息后，处理消息的逻辑是否采用多线程，完全由你决定。</p></li></ul></li><li><p>Kafka 多线程方案:</p><p>Kafka Consumer 类不是线程安全的 (thread-safe)。所有的网络 I/O 处理都是发生在用户主线程中，因此，你在使用过程中必须要确保线程安全。</p><ul><li>消费者程序启动多个线程，每个线程维护专属的 kafka Consumer实例，负责完整的消息获取、消息处理流程。</li><li>消费者程序使用单或多线程获取消息，同时创建多个消费线程执行消息处理逻辑</li></ul></li></ul><h3 id="消费者组消费进度监控怎么实现？"><a href="#消费者组消费进度监控怎么实现？" class="headerlink" title="消费者组消费进度监控怎么实现？"></a>消费者组消费进度监控怎么实现？</h3><p>监控Kafka的滞后程度 Lag</p><p>有三种方法监控：</p><ul><li>Kafka自带命令</li><li>Kafka Java Consumer API</li><li>使用 Kafka 自带的 JMX 监控指标</li></ul><h3 id="消费者组重平衡全流程解析"><a href="#消费者组重平衡全流程解析" class="headerlink" title="消费者组重平衡全流程解析"></a>消费者组重平衡全流程解析</h3><p>依赖消费端的心跳线程来通知其他消费者实例，当需要发生重平衡时，Broker会把需要重平衡的信号封装至心跳上报的响应体中。</p><p>重平衡流程：</p><ul><li>新成员加入：<ul><li>新成员分别发送JoinGroup 请求和 SyncGroup 请求把组员信息发送给调解者，由协调者作为节点的分配</li></ul></li><li>组员主动离组：<ul><li>流程基本同新成员加入</li></ul></li><li>组员崩溃离组：<ul><li>靠心跳线程检测组员状态，由协调者发起重平衡</li></ul></li></ul><h3 id="Kafka控制器"><a href="#Kafka控制器" class="headerlink" title="Kafka控制器"></a>Kafka控制器</h3><p>运行时只能有一个Broker作为控制器，第一个在zookeeper中创建controller节点的Broker会被指定为控制器</p><p>控制器职责：</p><ul><li>主题管理(创建、删除、增加分区)</li><li>分区重分配</li><li>Preferred领导者选举</li><li>集群成员管理(新增Broker 、Broker主动关闭、Briker宕机)</li><li>数据服务</li></ul><p>控制器单点故障转移由zookeeper的watch功能保证通知</p><h3 id="关于高水位和Leader-Epoch"><a href="#关于高水位和Leader-Epoch" class="headerlink" title="关于高水位和Leader Epoch"></a>关于高水位和Leader Epoch</h3><p>Kafka用高水位来表示Kafka中的消息位移，位移值小于高水位的表示已提交的数据，高于高水位的数据表示未提交信息，不能被消费者消费。</p><p>高水位的作用：</p><p>1.定义消息可见性，即用来标识分区下的哪些消息是可以被消费者消费的</p><p>2.帮助Kafka完成副本同步</p><h3 id="管理和监控-skip"><a href="#管理和监控-skip" class="headerlink" title="管理和监控 skip"></a>管理和监控 skip</h3><h3 id="Kafka-Stream与其他流处理平台的差异在哪"><a href="#Kafka-Stream与其他流处理平台的差异在哪" class="headerlink" title="Kafka Stream与其他流处理平台的差异在哪"></a>Kafka Stream与其他流处理平台的差异在哪</h3><ul><li>Kafka Stream最大的特色就是它不是一个平台，至少它不是一个具备完整功能的平台</li><li>从应用部署方面来看，Kafka Stream倾向于将部署交给开发人员来做，而不是自己实现</li><li>Kafka Stream只支持与Kafka的集群的交换</li><li>Kafka Stream依赖Kafka的协调功能提供高容错性和高伸缩性</li></ul><p>Kafka Stream与consumer的区别是Kafka Stream是实时流处理组件，提供了很多算子，可以实现更多复杂的业务</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> kafka </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>常用的二次编码方式</title>
+      <link href="/2022/03/14/chang-yong-de-er-ci-bian-jie-ma-fang-shi/"/>
+      <url>/2022/03/14/chang-yong-de-er-ci-bian-jie-ma-fang-shi/</url>
+      
+        <content type="html"><![CDATA[<h3 id="为什么需要二次解码"><a href="#为什么需要二次解码" class="headerlink" title="为什么需要二次解码"></a>为什么需要二次解码</h3><p>因为一次解码的结果是字节，需要和项目中所使用的对象做转换，方便使用，这层解码器可以称为“二次解码器”。相应的，对应的编码器是为了将java 对象转化成字节流方便传输存储。</p><p>一次编码器：ByteToMessageDecoder</p><ul><li>io.netty.buffer.ByteBuf(原始数据流) -&gt; io.netty.buffer.ByteBuf（用户数据）</li></ul><p>二次解码器：MessageToMessageDecoder</p><ul><li>io.betty.buffer.ByteBuf(用户数据) -&gt;Java Object</li></ul><h3 id="常用的二次编解码方式"><a href="#常用的二次编解码方式" class="headerlink" title="常用的二次编解码方式"></a>常用的二次编解码方式</h3><ul><li>Java序列化</li><li>Marshing</li><li>XML</li><li>JSON</li><li>MEssagePAck</li><li>Protobuf</li><li>其他</li></ul><h3 id="选择编解码方式的要点"><a href="#选择编解码方式的要点" class="headerlink" title="选择编解码方式的要点"></a>选择编解码方式的要点</h3><ul><li>空间：编码后占用空间</li></ul><h3 id="Protobuf简介与使用"><a href="#Protobuf简介与使用" class="headerlink" title="Protobuf简介与使用"></a>Protobuf简介与使用</h3><h3 id="源码解读：Netty对二次编码的支持"><a href="#源码解读：Netty对二次编码的支持" class="headerlink" title="源码解读：Netty对二次编码的支持"></a>源码解读：Netty对二次编码的支持</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> Netty </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Netty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>编写网络应用程序基本步骤</title>
+      <link href="/2022/03/14/bian-xie-wang-luo-ying-yong-cheng-xu-ji-ben-bu-zou/"/>
+      <url>/2022/03/14/bian-xie-wang-luo-ying-yong-cheng-xu-ji-ben-bu-zou/</url>
+      
+        <content type="html"><![CDATA[<p>编写网络应用程序基本步骤：</p><ul><li><p>需求分析</p></li><li><p>定义业务数据结构</p></li><li><p>实现业务逻辑</p></li><li><p>选择传输协议</p></li><li><p>定义传输信息结构</p></li><li><p>选择编解码<br>包括：<br>1、数据本身编解码<br>2、压缩等编解码<br>3、粘包/半包处理编解码</p></li><li><p>实现所有的编解码</p></li><li><p>编写应用程序</p></li><li><p>测试与改进</p></li></ul><p>编写代码-&gt;<br>复查代码-&gt;</p><ul><li>检索”最佳实践” -&gt;检索”坑”-&gt;对比经典项目实现-&gt;同行评审</li></ul><p>临门一脚-&gt;</p><ul><li>检查是否可诊断</li><li>检查是否可度量<br>上线-&gt;反馈-&gt;</li><li>收集错误数据</li><li>收集性能数据</li></ul><p>数据结构设计：</p><p>Frame<br>Message<br>Message Header<br>Message Body<br>length<br>version<br>opCode<br>streamId<br>operation/operation result</p><p>粘包/半包 -&gt; 封帧 -&gt; 加上length字段</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Netty </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Netty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>netty如何玩转内存使用</title>
+      <link href="/2022/03/14/netty-ru-he-wan-zhuan-nei-cun-shi-yong/"/>
+      <url>/2022/03/14/netty-ru-he-wan-zhuan-nei-cun-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Netty如何玩转内存使用"><a href="#Netty如何玩转内存使用" class="headerlink" title="Netty如何玩转内存使用"></a>Netty如何玩转内存使用</h3><p>1、减少对象本身大小</p><p>2、对分配内存进行预估</p><p>3、Zero-Copy 零复制</p><p>4、堆外内存</p><p>优点：<br>1、破除对空间限制，减轻GC压力</p><p>2、避免复制</p><p>缺点：</p><p>1、创建速度稍慢</p><p>2、堆外内存受操作系统管理</p><p>5、内存池</p><p>为什么引入对象池:</p><p>1、创建对象开销大<br>2、对象高频率创建且复用<br>3、支持并发又能保护系统<br>4、维持、共享有限的资源</p><p>如何实现对象池？</p><p>1、开源实现：Apache Commons Pool<br>2、Netty轻量级对象池实现io.netty.util.Recycler</p><h3 id="源码解读Netty内存使用"><a href="#源码解读Netty内存使用" class="headerlink" title="源码解读Netty内存使用"></a>源码解读Netty内存使用</h3><p>1、内存池/非内存池的默认选择及切换方式<br>io.netty.channel.DefaultChannelConfig#allocator</p><p>2、内存池的实现<br>io.netty.buffer.PooledDireByteBuf<br>3、堆外内存/堆内内存的默认选择及切换方式<br>4、堆外内存的分配本质</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Netty </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Netty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>TCP粘包、半包 Netty全搞定</title>
+      <link href="/2022/03/13/tcp-nian-bao-ban-bao-netty-quan-gao-ding/"/>
+      <url>/2022/03/13/tcp-nian-bao-ban-bao-netty-quan-gao-ding/</url>
+      
+        <content type="html"><![CDATA[<p>1、什么是粘包和半包？</p><p>粘包：一次接收全部消息</p><p>半包：分多次接收到多个不完整的消息</p><p>2、为什么TCP应用会出现粘包和半包现象</p><p>粘包的主要原因：</p><ul><li>发送方每次写入数据 &lt; 套接字缓冲区大小</li><li>接收方读取套接字缓冲区数据不及时</li></ul><p>半包的主要原因：</p><ul><li>发送方写入数据 &gt; 套接字缓冲区大小</li><li>发送的数据大于协议的MTU(Maximum Transmission Unit，最大传输单元)，必须拆包</li></ul><p>收发：<br>一个发送可能被多次接收，多个发送可能被一次接收</p><p>传输：<br>一个发送可能占用多个传输包，多个发送可能公用一个传输包</p><p>根本原因：TCP是流式协议，消息无边界</p><p>3、解决粘包和半包问题的几种常用方法</p><p>解决问题的根本手段：找出消息边界：</p><table><thead><tr><th align="left">方式\比较</th><th align="left">寻找消息边界方式</th><th align="left">优点</th><th align="left">缺点</th><th align="left">推荐度</th></tr></thead><tbody><tr><td align="left">TCP连接改成短链接，一个请求一个短连接</td><td align="left">建立连接到释放连接之间的信息即为传输消息</td><td align="left">简单</td><td align="left">效率低下</td><td align="left">推荐度</td></tr><tr><td align="left">(封装成帧)固定长度</td><td align="left">满足固定长度即可</td><td align="left">简单</td><td align="left">空间浪费</td><td align="left">不推荐</td></tr><tr><td align="left">（封装成帧）分隔符</td><td align="left">分隔符之间</td><td align="left">空间不浪费，也比较简单</td><td align="left">内容本身出现分隔符时需转义，所以需要扫描内容</td><td align="left">推荐</td></tr><tr><td align="left">(封装成帧)固定长度字段存内容的长度信息</td><td align="left">先解析固定长度的字段获取长度，然后读取后续内容</td><td align="left">精确定位用户数据，内容也不用转义</td><td align="left">长度理论上有限制，需提前预知可能的最大长度从而定义长度占用字节数</td><td align="left">推荐</td></tr><tr><td align="left">(封装成帧)其他方式</td><td align="left">json</td><td align="left">需要衡量实际场景，对现有协议的支持</td><td align="left"></td><td align="left"></td></tr></tbody></table><p>4、Netty对三种常用封帧方式的支持</p><table><thead><tr><th align="left">方式\支持</th><th align="left">解码</th><th align="left">编码</th></tr></thead><tbody><tr><td align="left">固定长度</td><td align="left">FixedLengthFrameDecoder</td><td align="left">简单</td></tr><tr><td align="left">分隔符</td><td align="left">DelimiterBasedFrameDecoder</td><td align="left">简单</td></tr><tr><td align="left">固定长度字段存个内容的长度信息</td><td align="left">LengthFieldBasedFrameDecoder</td><td align="left">LengthFieldPrepender</td></tr></tbody></table><p>5、解读Netty处理粘包、半包的源码</p><ul><li><p>解码的核心工作流程</p></li><li><p>解码中两种数据积累器的区别</p></li><li><p>三种解码器的额外控制参数有哪些</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Netty </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Netty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>netty三种IO的支持</title>
+      <link href="/2022/03/13/netty-san-chong-io-de-zhi-chi/"/>
+      <url>/2022/03/13/netty-san-chong-io-de-zhi-chi/</url>
+      
+        <content type="html"><![CDATA[<h3 id="什么是经典的三种I-x2F-O模式？"><a href="#什么是经典的三种I-x2F-O模式？" class="headerlink" title="什么是经典的三种I/O模式？"></a>什么是经典的三种I/O模式？</h3><table><thead><tr><th align="left">场景</th><th align="left">模式</th><th align="left">jdk支持</th></tr></thead><tbody><tr><td align="left">排队打饭</td><td align="left">BIO(阻塞I/O)</td><td align="left">jdk1.4之前</td></tr><tr><td align="left">点单、等待被叫模式</td><td align="left">NIO(非阻塞I/O)</td><td align="left">JDK1.4</td></tr><tr><td align="left">包厢</td><td align="left">AIO（非阻塞异步I/O）</td><td align="left">JDK1.7</td></tr></tbody></table><h3 id="Netty对三种I-x2F-O模式的支持？"><a href="#Netty对三种I-x2F-O模式的支持？" class="headerlink" title="Netty对三种I/O模式的支持？"></a>Netty对三种I/O模式的支持？</h3><p>曾经对于三种IO都曾做过支持</p><h3 id="为什么Netty仅支持NIO了？"><a href="#为什么Netty仅支持NIO了？" class="headerlink" title="为什么Netty仅支持NIO了？"></a>为什么Netty仅支持NIO了？</h3><p>1、不建议使用阻塞I/O（BIO/OIO），因为在连接数高的情况下，阻塞意味着占用一个线程，比较耗资源，效率非常低。<br>2、对于不同平台支持的成熟度不同，windows实现成熟，但是很少用来做服务器。linux常用来做服务器，但是AIO不够成熟，并且Linux下AIO相比较NIO的性能提升不明显。</p><h3 id="为什么Netty有多种NIO实现-？"><a href="#为什么Netty有多种NIO实现-？" class="headerlink" title="为什么Netty有多种NIO实现 ？"></a>为什么Netty有多种NIO实现 ？</h3><p>通用的NIO实现在Linux下也是使用epoll，为什么Netty还要单独实现？</p><p>1、因为Netty实现得更好，Netty暴露了更多的可控参数，例如：</p><ul><li>JDK的NIO默认实现是水平触发</li><li>Netty是边缘触发和水平触发可切换</li></ul><p><code>ps：单独解释边缘触发啊和水平触发</code></p><p>2、Netty实现的垃圾回收更少、性能更好</p><h3 id="NIO一定优于BIO吗？"><a href="#NIO一定优于BIO吗？" class="headerlink" title="NIO一定优于BIO吗？"></a>NIO一定优于BIO吗？</h3><p>1、BIO代码简单<br>2、特定场景：连接数少、并发度低、BIO性能不输NIO</p><h3 id="源码解读Netty怎么切换I-x2F-O模式？"><a href="#源码解读Netty怎么切换I-x2F-O模式？" class="headerlink" title="源码解读Netty怎么切换I/O模式？"></a>源码解读Netty怎么切换I/O模式？</h3><p>怎么切换？</p><p>原理是什么？</p><p>为什么服务器开发并不需要切换客户端对应的socket？</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Netty </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Netty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>netty如何支持三种Reactor</title>
       <link href="/2022/03/13/netty-ru-he-zhi-chi-san-chong-reactor/"/>
       <url>/2022/03/13/netty-ru-he-zhi-chi-san-chong-reactor/</url>

@@ -1,4 +1,4 @@
-title: 一个普通Coder的学习与日常
+title: 我的灿烂人生
 subtitle: ''
 description: ''
 keywords:
@@ -95,3 +95,15 @@ music:
   volume: 0.5       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
   listFolded: false  # 列表默认折叠
   hideLrc: false     # 隐藏歌词
+
+live2d:
+  enable: true
+  scriptFrom: local
+  model:
+    use: live2d-widget-model-haruto #模型选择
+  display:
+    position: right  #模型位置
+    width: 150       #模型宽度
+    height: 1200      #模型高度
+  mobile:
+    show: true      #是否在手机端显示

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>一个普通Coder的学习与日常</title>
+  <title>我的灿烂人生</title>
   
   
   <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
   
   <link href="https://xianyanglin.github.io/"/>
-  <updated>2022-03-13T03:32:15.299Z</updated>
+  <updated>2022-03-24T08:30:35.857Z</updated>
   <id>https://xianyanglin.github.io/</id>
   
   <author>
@@ -17,11 +17,227 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>服务网格</title>
+    <link href="https://xianyanglin.github.io/2022/03/24/fu-wu-wang-ge/"/>
+    <id>https://xianyanglin.github.io/2022/03/24/fu-wu-wang-ge/</id>
+    <published>2022-03-24T08:11:00.000Z</published>
+    <updated>2022-03-24T08:30:35.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;什么是服务网格？&quot;&gt;&lt;a href=&quot;#什么是服务网格？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="ServiceMesh" scheme="https://xianyanglin.github.io/categories/ServiceMesh/"/>
+    
+    
+    <category term="ServiceMesh" scheme="https://xianyanglin.github.io/tags/ServiceMesh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes的设计解读</title>
+    <link href="https://xianyanglin.github.io/2022/03/20/kubernetes-de-she-ji-jie-du/"/>
+    <id>https://xianyanglin.github.io/2022/03/20/kubernetes-de-she-ji-jie-du/</id>
+    <published>2022-03-20T04:31:00.000Z</published>
+    <updated>2022-03-19T16:31:31.808Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;pod-设计解读&quot;&gt;&lt;a href=&quot;#pod-设计解读&quot; class=&quot;headerlink&quot; title=&quot;pod 设计解读&quot;&gt;&lt;/a&gt;pod</summary>
+        
+      
+    
+    
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/categories/Kubernetes/"/>
+    
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka核心技术</title>
+    <link href="https://xianyanglin.github.io/2022/03/20/kafka-he-xin-ji-zhu/"/>
+    <id>https://xianyanglin.github.io/2022/03/20/kafka-he-xin-ji-zhu/</id>
+    <published>2022-03-20T04:06:00.000Z</published>
+    <updated>2022-03-19T16:25:33.993Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;生产者消息分区机制原理剖析&quot;&gt;&lt;a href=&quot;#生产者消息分区机制原理剖析&quot; class=&quot;headerlink&quot; title=&quot;生产者消息分区机制原理剖析&quot;&gt;&lt;/a&gt;生产者消息分区机制原理剖析&lt;/h3&gt;&lt;p&gt;Kafka的三级结构：主题 - 分区 -</summary>
+        
+      
+    
+    
+    
+    <category term="kafka" scheme="https://xianyanglin.github.io/categories/kafka/"/>
+    
+    
+    <category term="kafka" scheme="https://xianyanglin.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用的二次编码方式</title>
+    <link href="https://xianyanglin.github.io/2022/03/14/chang-yong-de-er-ci-bian-jie-ma-fang-shi/"/>
+    <id>https://xianyanglin.github.io/2022/03/14/chang-yong-de-er-ci-bian-jie-ma-fang-shi/</id>
+    <published>2022-03-14T15:25:00.000Z</published>
+    <updated>2022-03-13T16:04:20.911Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;为什么需要二次解码&quot;&gt;&lt;a href=&quot;#为什么需要二次解码&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编写网络应用程序基本步骤</title>
+    <link href="https://xianyanglin.github.io/2022/03/14/bian-xie-wang-luo-ying-yong-cheng-xu-ji-ben-bu-zou/"/>
+    <id>https://xianyanglin.github.io/2022/03/14/bian-xie-wang-luo-ying-yong-cheng-xu-ji-ben-bu-zou/</id>
+    <published>2022-03-13T16:25:00.000Z</published>
+    <updated>2022-03-13T16:04:20.901Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;编写网络应用程序基本步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;需求分析&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定义业务数据结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实现业务逻辑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择传输协议&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定义传输信息结构&lt;/p</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty如何玩转内存使用</title>
+    <link href="https://xianyanglin.github.io/2022/03/14/netty-ru-he-wan-zhuan-nei-cun-shi-yong/"/>
+    <id>https://xianyanglin.github.io/2022/03/14/netty-ru-he-wan-zhuan-nei-cun-shi-yong/</id>
+    <published>2022-03-13T16:01:00.000Z</published>
+    <updated>2022-03-13T16:04:20.843Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Netty如何玩转内存使用&quot;&gt;&lt;a href=&quot;#Netty如何玩转内存使用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP粘包、半包 Netty全搞定</title>
+    <link href="https://xianyanglin.github.io/2022/03/13/tcp-nian-bao-ban-bao-netty-quan-gao-ding/"/>
+    <id>https://xianyanglin.github.io/2022/03/13/tcp-nian-bao-ban-bao-netty-quan-gao-ding/</id>
+    <published>2022-03-13T15:59:00.000Z</published>
+    <updated>2022-03-13T16:04:20.909Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1、什么是粘包和半包？&lt;/p&gt;
+&lt;p&gt;粘包：一次接收全部消息&lt;/p&gt;
+&lt;p&gt;半包：分多次接收到多个不完整的消息&lt;/p&gt;
+&lt;p&gt;2、为什么TCP应用会出现粘包和半包现象&lt;/p&gt;
+&lt;p&gt;粘包的主要原因：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发送方每次写入数据 &amp;lt;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty三种IO的支持</title>
+    <link href="https://xianyanglin.github.io/2022/03/13/netty-san-chong-io-de-zhi-chi/"/>
+    <id>https://xianyanglin.github.io/2022/03/13/netty-san-chong-io-de-zhi-chi/</id>
+    <published>2022-03-13T15:25:00.000Z</published>
+    <updated>2022-03-13T16:04:20.912Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;什么是经典的三种I-x2F-O模式？&quot;&gt;&lt;a href=&quot;#什么是经典的三种I-x2F-O模式？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
     <title>netty如何支持三种Reactor</title>
     <link href="https://xianyanglin.github.io/2022/03/13/netty-ru-he-zhi-chi-san-chong-reactor/"/>
     <id>https://xianyanglin.github.io/2022/03/13/netty-ru-he-zhi-chi-san-chong-reactor/</id>
     <published>2022-03-13T01:25:00.000Z</published>
-    <updated>2022-03-13T03:32:15.299Z</updated>
+    <updated>2022-03-13T10:29:34.246Z</updated>
     
     
       
