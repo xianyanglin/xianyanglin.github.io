@@ -62,9 +62,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="我的灿烂人生" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="我的灿烂人生" type="application/atom+xml">
 </head>
 
 
@@ -523,21 +523,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-18
+                    2024-01-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -562,7 +562,9 @@
             <div id="articleContent">
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hango 是由网易公司开源的一个基于Envoy构建的高性能、可扩展功能丰富的云原生API网关，本文将从Hango的诞生背景、架构设计、功能特性、大规模落地等方面进行介绍。</p>
 <h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>Envoy起初在网易轻舟是作为服务网格Istio的数据面使用，承担了东西向、南北向全部数据流量的代理、治理与观测职责。随着服务网格在网易内部大规模落地，我们对 Envoy 的功能、性能、扩展性、可观测性等多方面有了全面的研究与实践，也深刻感受到 Envoy 优质的内在品质，及其在云原生时代巨大的发展潜力。<br>于是我们开始尝试基于 Envoy 建设网易的新一代 API 网关，目标是替换网易内部较多业务采用 Java 异步化网关、 Kong 网关，并能够满足业务逐步进入云原生时代的南北向流量治理需求。从结果上看，选型 Envoy 不仅让我们顺利实现了网易 API 网关全面升级，还推动了网易云原生、微服务技术栈整体的统一与向前发展。</p>
-<h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><p>Hango 基于云原生理念构建，数据面基于Envoy进行扩展，增强插件链，提供 Rider 模块用于自定义插件扩展；控制面组件包括 Slime，Istio，API Plane以及Portal模块。其架构图如下所示：<br><img src="/../img/hango%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84.png" alt="hango设计架构.png"><br>组件说明：</p>
+<h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><p>Hango 基于云原生理念构建，数据面基于Envoy进行扩展，增强插件链，提供 Rider 模块用于自定义插件扩展；控制面组件包括 Slime，Istio，API Plane以及Portal模块。其架构图如下所示：</p>
+<p><img src="/../../img/hango%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84.png" alt="hango设计架构.png"></p>
+<p>组件说明：</p>
 <ul>
 <li>Envoy: Hango网关的数据面流量入口，通过XDS模式获取Istiod配置</li>
 <li>Istiod: Hango网关对接Envoy的适配层，监听指定CRD并通过XDS向Envoy下发配置</li>
@@ -574,12 +576,12 @@
 <p>Hango UI将Envoy的功能进行了可视化的配置，与Hango Portal进行交互，Hango Portal将业务信息存于DB，并调用Hango Api-plane生成服务路由相应的CR，Istiod在Watch到API-plane生成的CR会通过XDS协议下发给数据面Envoy，Envoy将配置信息应用到数据面。<br>对于插件的能力的扩展，我们使用自定义的CRD(EnvoyPlugin)来承载插件信息，Slime模块监听Slime CRD，将Slime CRD转换为EnvoyFilter的插件配置对数据面envoy进行扩展。</p>
 <p>下面是Hango的数据流向：</p>
 <h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><h3 id="虚拟网关"><a href="#虚拟网关" class="headerlink" title="虚拟网关"></a>虚拟网关</h3><h4 id="虚拟网关-1"><a href="#虚拟网关-1" class="headerlink" title="虚拟网关"></a>虚拟网关</h4><p>在L7层通用网关中，一组Envoy网关集群可以表现出不同的形态，如API网关、L7负载均衡、ingress。网关集群在部署时已确定的一组网关实例，称之为网关，不同表现形态称之为虚拟网关。 依托于网关，可通过不同场景进行配置。网关数据层采用Envoy作为底层代理，通过不同的Listener配置开放Envoy不同的监听端口，对应不同形态的虚拟网关。在L7层通用网关中，一组Envoy网关集群可以表现出不同的形态，如API网关、L7负载均衡、ingress。网关集群在部署时已确定的一组网关实例，称之为网关，不同表现形态称之为虚拟网关。 依托于网关，可通过不同场景进行配置。网关数据层采用Envoy作为底层代理，通过不同的Listener配置开放Envoy不同的监听端口，对应不同形态的虚拟网关。</p>
-<p>以下为虚拟网关的功能架构图：<br><img src="/../img/%E8%99%9A%E6%8B%9F%E7%BD%91%E5%85%B3%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="虚拟网关功能架构图.png"></p>
+<p>以下为虚拟网关的功能架构图：<br><img src="/../../img/%E8%99%9A%E6%8B%9F%E7%BD%91%E5%85%B3%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="虚拟网关功能架构图.png"></p>
 <p>一组Envoy网关实例部署在Kubernetes集群中，用户通过配置服务在网关生成Listener(虚拟网关)，Listener(虚拟网关)监听对应的服务，当有请求访问该监听端口时，进行流量转发。</p>
 <h4 id="Kubernetes-Gateway"><a href="#Kubernetes-Gateway" class="headerlink" title="Kubernetes Gateway"></a>Kubernetes Gateway</h4><p>Gateway API作为Kubernetes入口网关的最新成果，得到行业的广泛支持。它代表了Ingress功能的一个父集，定义了一系列以Gateway资源为中心的资源集合。与Ingress类似，Kubernetes 中没有内置Gateway API默认实现，需要依赖基础设施商提供Gateway Class。 </p>
 <p>官方文档见：<a target="_blank" rel="noopener" href="https://gateway-api.sigs.k8s.io/">https://gateway-api.sigs.k8s.io</a></p>
 <p>作为Ingress资源的升级，Gateway API提供了一系列治理能力更强、表达性更优、可扩展性更高的资源集合，其中GatewayClass、Gateway和HTTPRoute已经进入Beta阶段，其他CRD还处于实验阶段。 此处只需要关注Gateway和xRoute资源，详细的API定义可参考Gateway API</p>
-<p>以下图片为Gateway API的相关组件：<br><img src="/../img/Gateway%20API%E7%9B%B8%E5%85%B3%E7%BB%84%E4%BB%B6.png" alt="Gateway API相关组件.png"></p>
+<p>以下图片为Gateway API的相关组件：<br><img src="/../../img/Gateway%20API%E7%9B%B8%E5%85%B3%E7%BB%84%E4%BB%B6.png" alt="Gateway API相关组件.png"></p>
 <ul>
 <li><p>GatewayClass：GatewayClass是由基础架构提供商定义的集群范围的资源，该资源用于指定对应的Gateway Controller。目前已实现的Gateway Controller的产品包括Envoy Gateway（beta）、Istio（beta）、Kong（beta）等，详情可参考Gateway Controller</p>
 </li>
@@ -597,9 +599,9 @@
 </li>
 </ul>
 <p>以下为Kubernetes Gateway在hango的功能实现架构图，Gateway API在控制台被创建之后会被开源的Istio控制面将Gateway API对象转换为Istio API对象，最终下发至Envoy数据面。 hango在此基础之上对HttpRoute做了插件上的增强，提供了更多丰富的插件能力。</p>
-<p><img src="/../img/Kubernetes%20Gateway%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="Kubernetes Gateway技术架构图.png"></p>
+<p><img src="/../../img/Kubernetes%20Gateway%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="Kubernetes Gateway技术架构图.png"></p>
 <h4 id="Kubernetes-Ingress"><a href="#Kubernetes-Ingress" class="headerlink" title="Kubernetes Ingress"></a>Kubernetes Ingress</h4><p>Ingress是K8s生态中定义流量入口的一种资源，但其只是个规则，仅创建Ingress资源本身是没有任何效果的，想让其生效，就需要有一个Ingress Controller去监听K8s中的ingress资源， 并对这些资源进行规则解析，转换为其数据面中的代理规则，并由数据面来进行流量转发。当前K8s默认的Ingress Controller实现是Nginx，本次方案描述如何将通用网关纳管Ingress的流量。</p>
-<p>Ingress资源是对集群中服务的外部访问进行管理的 API 对象，可以将集群内部服务通过HTTP或HTTPS暴露出去，流量路由规则由Ingress资源定义。<br><img src="/../img/Ingress.png" alt="Ingress.png"></p>
+<p>Ingress资源是对集群中服务的外部访问进行管理的 API 对象，可以将集群内部服务通过HTTP或HTTPS暴露出去，流量路由规则由Ingress资源定义。<br><img src="/../../img/Ingress.png" alt="Ingress.png"></p>
 <p>目前只支持Ingress v1版本流量纳管，v1版本的Ingress资源定义如下：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">##ingress v1</span>
 <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.k8s.io/v1
@@ -642,10 +644,23 @@
 <li>status.loadBalancer.ingress：指定ingress的访问地址<h3 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h3>目前Istio1.8之后只保留了对接Kubernetes注册中心的逻辑，但是在实际生产实践中，我们发现大量用户只是将Kubernetes作为部署和管理的平台，服务信息依旧注册在第三方服务注册中心，如Nacos和Zookeeper，因此我们必须解决对接第三方注册中心的问题，以满足用户的需求。<br>我们采用的方案是网易开源的slime组件作为服务发现的适配层，slime组件支持对接多种第三方注册中心，如Nacos、Zookeeper、Eureka、Consul等，同时支持对接Kubernetes注册中心，将服务发现的逻辑统一抽象为slime CRD，通过slime CRD将服务发现的逻辑下发至Envoy数据面。</li>
 </ul>
 <p>slime组件的相关介绍见：<a target="_blank" rel="noopener" href="https://slime-io.github.io/blog/Slime%E5%8C%96%E8%A7%A3%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%E5%A4%9A%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%85%BC%E5%AE%B9%E4%B9%8B%E7%97%9B/">Slime化解服务网格多注册中心兼容之痛</a></p>
-<h2 id="大规模落地"><a href="#大规模落地" class="headerlink" title="大规模落地"></a>大规模落地</h2><p>本文结合网易内部的实践经验，将Hango的大规模落地分为三个角度介绍Hango网关在网易集团内部的落地实践。</p>
-<h3 id="平滑纳管"><a href="#平滑纳管" class="headerlink" title="平滑纳管"></a>平滑纳管</h3><p>基于Hango网关规模落地中，我们对容器服务，裸金属服务等实现了平滑纳管以及平滑迁移，为业务上云提供了便利接入，打消了业务上云无法平滑的顾虑。</p>
-<p>在集团内部，针对不同的业务划分不同的网关集群，从业务上进行配置隔离，提升网关可靠性。<br><img src="/../img/%E5%B9%B3%E6%BB%91%E7%BA%B3%E7%AE%A1-%E9%9B%86%E7%BE%A4%E9%9A%94%E7%A6%BB.png" alt="平滑纳管-集群隔离.png"></p>
-<h3 id="灰度发布"><a href="#灰度发布" class="headerlink" title="灰度发布"></a>灰度发布</h3><h3 id="可观测"><a href="#可观测" class="headerlink" title="可观测"></a>可观测</h3><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2>
+<h3 id="可观测"><a href="#可观测" class="headerlink" title="可观测"></a>可观测</h3><p>基于Envoy良好的观测性，Hango网关在网易集团内部进行规模落地过程中，结合服务网格场景，提供丰富的观测能力，整体架构如下</p>
+<ul>
+<li>日志</li>
+</ul>
+<p>Envoy中事件的详细记录，Hango网关基于Envoy进行数据面扩展，提供了灵活易配置的AccessLog，支持自定义格式，自定义顾虑规则以及输出。</p>
+<p>基于filebeat以及elastic的能力，构建一体化日志审计平台。</p>
+<ul>
+<li>监控</li>
+</ul>
+<p>基于Envoy cluster mertic等信息，利用Promethues构建网关/服务等多维度指标体系。同时，针对网关容器化部署模式，基于Kubernetes 容器对应的 metrics构建容器维度的指标监控，涵盖CPU/内存/带宽等多维度监控。</p>
+<ul>
+<li>链路追踪</li>
+</ul>
+<p>基于Envoy开箱即用的多种tracing接入，拓展力强，目前已完成线上SkyWalking等tracing的接入。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>Hango作为一名开源领域的新生儿，我们会秉承拥抱云原生的理念，继续跟进Istio/Envoy的演进，发挥更大的领域价值。下一阶段，我们会在多语言扩展，LB融合等多场景进行发力，也期待更多关注云原生、API网关的同学能够加入Hango开源社区建设。</p>
+<p>诚挚的欢迎大家关注Hango Gateway</p>
+
                 
             </div>
             <hr/>
@@ -1012,13 +1027,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/01/17/live/2023-nian-bu-tai-shun-li-di-guo-du/">
+                <a href="/2023/12/30/funcdesign/wang-guan-jin-rong-chang-jing-xia-de-da-gui-mo-shi-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="网关金融场景下的大规模实践">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">网关金融场景下的大规模实践</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1029,15 +1044,35 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-30
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            xyl
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/" class="post-category">
+                                    云原生网关
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/">
+                        <span class="chip bg-color">云原生网关</span>
+                    </a>
+                    
+                    <a href="/tags/Envoy/">
+                        <span class="chip bg-color">Envoy</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%87%91%E8%9E%8D/">
+                        <span class="chip bg-color">金融</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1049,13 +1084,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/14/funcdesign/tan-suo-fen-bu-shi-shi-wu-jie-jue-fang-an-yi-ji-shi-xian-yuan-li/">
+                <a href="/2023/05/16/funcdesign/wang-guan-liang-di-san-zhong-xin-de-shi-jian-yu-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="探索分布式事务解决方案以及实现原理">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="网关两地三中心的实践与总结">
                         
-                        <span class="card-title">探索分布式事务解决方案以及实现原理</span>
+                        <span class="card-title">网关两地三中心的实践与总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1066,14 +1101,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="post-category">
-                                    分布式事务
+                            <a href="/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/" class="post-category">
+                                    云原生网关
                                 </a>
                             
                             
@@ -1083,8 +1118,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
-                        <span class="chip bg-color">分布式事务</span>
+                    <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/">
+                        <span class="chip bg-color">云原生网关</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%A4%E5%9C%B0%E4%B8%89%E4%B8%AD%E5%BF%83/">
+                        <span class="chip bg-color">两地三中心</span>
                     </a>
                     
                 </div>
@@ -1282,7 +1321,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">17.7k</span>
+                        class="white-color">20.7k</span>
             
             
             
