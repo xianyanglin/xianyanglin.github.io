@@ -6,7 +6,7 @@
   <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
   
   <link href="https://xianyanglin.github.io/"/>
-  <updated>2024-01-24T09:01:26.284Z</updated>
+  <updated>2024-01-17T09:45:53.717Z</updated>
   <id>https://xianyanglin.github.io/</id>
   
   <author>
@@ -15,19 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://xianyanglin.github.io/2024/01/24/funcdesign/guan-yu-hango-wang-guan-zhong-gportal-he-api-plane-zu-jian-he-bing-de-liang-san-dian-si-kao/"/>
-    <id>https://xianyanglin.github.io/2024/01/24/funcdesign/guan-yu-hango-wang-guan-zhong-gportal-he-api-plane-zu-jian-he-bing-de-liang-san-dian-si-kao/</id>
-    <published>2024-01-24T09:01:26.284Z</published>
-    <updated>2024-01-24T09:01:26.284Z</updated>
-    
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title></title>
@@ -207,6 +194,35 @@
   </entry>
   
   <entry>
+    <title>关于Hango网关中gportal和api-plane组件合并实施方案</title>
+    <link href="https://xianyanglin.github.io/2023/03/12/funcdesign/guan-yu-hango-wang-guan-zhong-gportal-he-api-plane-zu-jian-he-bing-shi-shi-fang-an/"/>
+    <id>https://xianyanglin.github.io/2023/03/12/funcdesign/guan-yu-hango-wang-guan-zhong-gportal-he-api-plane-zu-jian-he-bing-shi-shi-fang-an/</id>
+    <published>2023-03-11T16:01:00.000Z</published>
+    <updated>2024-01-25T11:47:57.040Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;组件合并实施方案&quot;&gt;&lt;a href=&quot;#组件合并实施方案&quot; class=&quot;headerlink&quot; title=&quot;组件合并实施方案&quot;&gt;&lt;/a&gt;组件合并实施方案&lt;/h1&gt;&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Hango" scheme="https://xianyanglin.github.io/categories/Hango/"/>
+    
+    
+    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="Hango" scheme="https://xianyanglin.github.io/tags/Hango/"/>
+    
+  </entry>
+  
+  <entry>
     <title>探索分布式事务解决方案以及实现原理</title>
     <link href="https://xianyanglin.github.io/2023/01/14/funcdesign/tan-suo-fen-bu-shi-shi-wu-jie-jue-fang-an-yi-ji-shi-xian-yuan-li/"/>
     <id>https://xianyanglin.github.io/2023/01/14/funcdesign/tan-suo-fen-bu-shi-shi-wu-jie-jue-fang-an-yi-ji-shi-xian-yuan-li/</id>
@@ -236,7 +252,7 @@
     <link href="https://xianyanglin.github.io/2022/06/11/funcdesign/springcloudgateway-gong-neng-yuan-li-yi-ji-chan-pin-shi-jian/"/>
     <id>https://xianyanglin.github.io/2022/06/11/funcdesign/springcloudgateway-gong-neng-yuan-li-yi-ji-chan-pin-shi-jian/</id>
     <published>2022-06-10T16:01:00.000Z</published>
-    <updated>2024-01-17T09:27:03.569Z</updated>
+    <updated>2024-01-25T11:31:41.355Z</updated>
     
     
       
