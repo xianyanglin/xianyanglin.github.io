@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="网关可观测性建设-(SpringCloudGateway篇), 我的灿烂人生">
-    <meta name="description" content="">
+    <meta name="description" content="前言可观测性体系的建设，可以说是很多开源产品距离企业级使用的距离，SpringCloud Gateway 亦是如此。本文将从可观测性的角度，对SpringCloud Gateway进行一些改造，以期达到企业级的可观测性要求。
+可观测性网关通">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -522,14 +523,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-25
+                    2024-01-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    373
                 </div>
                 
 
@@ -559,7 +560,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可观测性体系的建设，可以说是很多开源产品距离企业级使用的距离，SpringCloud Gateway 亦是如此。本文将从可观测性的角度，对SpringCloud Gateway进行一些改造，以期达到企业级的可观测性要求。</p>
+<h2 id="可观测性"><a href="#可观测性" class="headerlink" title="可观测性"></a>可观测性</h2><p>网关通常会需要记录三类可观测性指标</p>
+<ul>
+<li><p>Metrics：如上图所示，记录请求数、QPS、响应码、P99、P999 等指标</p>
+</li>
+<li><p>Trace：网关链路能够串联后续微服务体系链路，实现全链路监控</p>
+</li>
+<li><p>Logging：按类别打印网关日志，常见的日志分类如 accessLog、requestLog、remotingLog 等</p>
+<h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p>开源 SpringCloud Gateway 集成了 micrometer-registry-prometheus，提供了一个开箱即用的大盘：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/3.1.8/reference/html/gateway-grafana-dashboard.json">https://docs.spring.io/spring-cloud-gateway/docs/3.1.8/reference/html/gateway-grafana-dashboard.json</a><br>需要更加丰富维度的指标则需要自行埋点。</p>
+</li>
+</ul>
+<p>而在展示上则是通过前端内嵌 Grafana 来实现，具体的功能架构如下图</p>
+<h3 id="Trace"><a href="#Trace" class="headerlink" title="Trace"></a>Trace</h3><p>Trace 方案推荐对接 opentelemetry。</p>
+<h3 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h3><p>Logging 方案则是 SpringCloud Gateway 开源欠缺的，在实际生产中至少应该打印 accessLog 记录请求信息，按需开启 requestLog 记录请求的 payload 信息和响应体信息，以及与后端服务连接的日志，用于排查一些连接问题。日志采集方案我们的实践是将 accessLog 输出到标准输出中，方便在 K8s 架构下配置采集，或者采用日志 agent 的方案进行文件采集。</p>
+
                 
             </div>
             <hr/>
@@ -1216,7 +1231,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">25.7k</span>
             
             
             
