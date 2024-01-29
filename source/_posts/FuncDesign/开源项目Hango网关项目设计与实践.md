@@ -17,7 +17,9 @@ Envoy起初在网易轻舟是作为服务网格Istio的数据面使用，承担�
 
 ## 架构设计
 Hango 基于云原生理念构建，数据面基于Envoy进行扩展，增强插件链，提供 Rider 模块用于自定义插件扩展；控制面组件包括 Slime，Istio，API Plane以及Portal模块。其架构图如下所示：
-![hango设计架构.png](..%2Fimg%2Fhango%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84.png)
+
+![hango设计架构.png](..%2F..%2Fimg%2Fhango%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84.png)
+
 组件说明：
 - Envoy: Hango网关的数据面流量入口，通过XDS模式获取Istiod配置
 - Istiod: Hango网关对接Envoy的适配层，监听指定CRD并通过XDS向Envoy下发配置
@@ -40,7 +42,7 @@ Hango UI将Envoy的功能进行了可视化的配置，与Hango Portal进行交�
 在L7层通用网关中，一组Envoy网关集群可以表现出不同的形态，如API网关、L7负载均衡、ingress。网关集群在部署时已确定的一组网关实例，称之为网关，不同表现形态称之为虚拟网关。 依托于网关，可通过不同场景进行配置。网关数据层采用Envoy作为底层代理，通过不同的Listener配置开放Envoy不同的监听端口，对应不同形态的虚拟网关。在L7层通用网关中，一组Envoy网关集群可以表现出不同的形态，如API网关、L7负载均衡、ingress。网关集群在部署时已确定的一组网关实例，称之为网关，不同表现形态称之为虚拟网关。 依托于网关，可通过不同场景进行配置。网关数据层采用Envoy作为底层代理，通过不同的Listener配置开放Envoy不同的监听端口，对应不同形态的虚拟网关。
 
 以下为虚拟网关的功能架构图：
-![虚拟网关功能架构图.png](..%2Fimg%2F%E8%99%9A%E6%8B%9F%E7%BD%91%E5%85%B3%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![虚拟网关功能架构图.png](..%2F..%2Fimg%2F%E8%99%9A%E6%8B%9F%E7%BD%91%E5%85%B3%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 一组Envoy网关实例部署在Kubernetes集群中，用户通过配置服务在网关生成Listener(虚拟网关)，Listener(虚拟网关)监听对应的服务，当有请求访问该监听端口时，进行流量转发。
 
@@ -52,7 +54,7 @@ Gateway API作为Kubernetes入口网关的最新成果，得到行业的广泛�
 作为Ingress资源的升级，Gateway API提供了一系列治理能力更强、表达性更优、可扩展性更高的资源集合，其中GatewayClass、Gateway和HTTPRoute已经进入Beta阶段，其他CRD还处于实验阶段。 此处只需要关注Gateway和xRoute资源，详细的API定义可参考Gateway API
 
 以下图片为Gateway API的相关组件：
-![Gateway API相关组件.png](..%2Fimg%2FGateway%20API%E7%9B%B8%E5%85%B3%E7%BB%84%E4%BB%B6.png)
+![Gateway API相关组件.png](..%2F..%2Fimg%2FGateway%20API%E7%9B%B8%E5%85%B3%E7%BB%84%E4%BB%B6.png)
 
 - GatewayClass：GatewayClass是由基础架构提供商定义的集群范围的资源，该资源用于指定对应的Gateway Controller。目前已实现的Gateway Controller的产品包括Envoy Gateway（beta）、Istio（beta）、Kong（beta）等，详情可参考Gateway Controller
 
@@ -68,13 +70,13 @@ Gateway API作为Kubernetes入口网关的最新成果，得到行业的广泛�
 
 以下为Kubernetes Gateway在hango的功能实现架构图，Gateway API在控制台被创建之后会被开源的Istio控制面将Gateway API对象转换为Istio API对象，最终下发至Envoy数据面。 hango在此基础之上对HttpRoute做了插件上的增强，提供了更多丰富的插件能力。
 
-![Kubernetes Gateway技术架构图.png](..%2Fimg%2FKubernetes%20Gateway%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![Kubernetes Gateway技术架构图.png](..%2F..%2Fimg%2FKubernetes%20Gateway%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 #### Kubernetes Ingress
 Ingress是K8s生态中定义流量入口的一种资源，但其只是个规则，仅创建Ingress资源本身是没有任何效果的，想让其生效，就需要有一个Ingress Controller去监听K8s中的ingress资源， 并对这些资源进行规则解析，转换为其数据面中的代理规则，并由数据面来进行流量转发。当前K8s默认的Ingress Controller实现是Nginx，本次方案描述如何将通用网关纳管Ingress的流量。
 
 Ingress资源是对集群中服务的外部访问进行管理的 API 对象，可以将集群内部服务通过HTTP或HTTPS暴露出去，流量路由规则由Ingress资源定义。
-![Ingress.png](..%2Fimg%2FIngress.png)
+![Ingress.png](..%2F..%2Fimg%2FIngress.png)
 
 目前只支持Ingress v1版本流量纳管，v1版本的Ingress资源定义如下：
 ```yaml
@@ -123,16 +125,26 @@ Ingress v1版本的资源定义中，主要包含以下几个重要注解：
 
 slime组件的相关介绍见：[Slime化解服务网格多注册中心兼容之痛](https://slime-io.github.io/blog/Slime%E5%8C%96%E8%A7%A3%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%E5%A4%9A%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%85%BC%E5%AE%B9%E4%B9%8B%E7%97%9B/)
 
-## 大规模落地
-本文结合网易内部的实践经验，将Hango的大规模落地分为三个角度介绍Hango网关在网易集团内部的落地实践。
-
-### 平滑纳管
-基于Hango网关规模落地中，我们对容器服务，裸金属服务等实现了平滑纳管以及平滑迁移，为业务上云提供了便利接入，打消了业务上云无法平滑的顾虑。
-
-在集团内部，针对不同的业务划分不同的网关集群，从业务上进行配置隔离，提升网关可靠性。
-![平滑纳管-集群隔离.png](..%2Fimg%2F%E5%B9%B3%E6%BB%91%E7%BA%B3%E7%AE%A1-%E9%9B%86%E7%BE%A4%E9%9A%94%E7%A6%BB.png)
-### 灰度发布
-
 ### 可观测
+基于Envoy良好的观测性，Hango网关在网易集团内部进行规模落地过程中，结合服务网格场景，提供丰富的观测能力，整体架构如下
+
+- 日志
+
+Envoy中事件的详细记录，Hango网关基于Envoy进行数据面扩展，提供了灵活易配置的AccessLog，支持自定义格式，自定义顾虑规则以及输出。
+
+基于filebeat以及elastic的能力，构建一体化日志审计平台。
+
+- 监控
+
+基于Envoy cluster mertic等信息，利用Promethues构建网关/服务等多维度指标体系。同时，针对网关容器化部署模式，基于Kubernetes 容器对应的 metrics构建容器维度的指标监控，涵盖CPU/内存/带宽等多维度监控。
+
+- 链路追踪
+
+基于Envoy开箱即用的多种tracing接入，拓展力强，目前已完成线上SkyWalking等tracing的接入。
+
 
 ## 写在最后
+
+Hango作为一名开源领域的新生儿，我们会秉承拥抱云原生的理念，继续跟进Istio/Envoy的演进，发挥更大的领域价值。下一阶段，我们会在多语言扩展，LB融合等多场景进行发力，也期待更多关注云原生、API网关的同学能够加入Hango开源社区建设。
+
+诚挚的欢迎大家关注Hango Gateway

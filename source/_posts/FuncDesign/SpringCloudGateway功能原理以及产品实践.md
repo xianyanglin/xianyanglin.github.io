@@ -36,7 +36,7 @@ Spring Cloud Gateway是Spring官方基于Spring5.0、SpringBoot2.0和Project Rea
 Spring Cloud Gateway网关是一个内外衔接的数据交换组件，对内API接口的方式纳管所有要对外透出的微服务，作为出口端点，对外提供API接口给上游的Web应用、Mobile应用、外部微服务。网关核心在于将请求流量由上游发起经过网关到下游的微服务，在流量出入的过程中，网关在路由策略，协议转换、过滤、API组合等方面构建
 网关的核心能力。
 
-![scg核心原理.png](..%2Fimg%2Fscg%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.png)
+![scg核心原理.png](..%2F..%2Fimg%2Fscg%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.png)
 
 ### 关键术语
 
@@ -44,7 +44,7 @@ Spring Cloud Gateway网关是一个内外衔接的数据交换组件，对内API
 - 断言Predicate：Java8函数断言，这里可以看做是满足什么条件的时候，route规则进行生效。允许开发者去定义匹配来自于Http Request中的任何信息，如请求头和参数。
 - 过滤器Filter：filter针对请求和响应进行增强、修改处理。filter可以认为是Spring Cloud Gateway最核心的模块，熔断、安全、逻辑执行、网络调用都是filter来完成的，其中又细分为gateway filter和global filter，区别在于是具体一个route规则生效还是所有route规则都生效。
 
-![scg核心原理2.png](..%2Fimg%2Fscg%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%862.png)
+![scg核心原理2.png](..%2F..%2Fimg%2Fscg%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%862.png)
 
 ## CSB2.0云原生网关如何保障服务高可用
 
@@ -58,12 +58,12 @@ Spring Cloud Gateway网关是一个内外衔接的数据交换组件，对内API
 ### 集群的部署结构：
 CSB2.0云原生网关目前是基于Kubernetes容器编排平台进行部署，由云平台提供SLB作为流量到网关节点的负载均衡能力，网关根据服务器的性能进行集群的部署，这部分的SLA的能力由云平台负责保障。企业部署一个地方的网关节点集群，相当于单数据中心，也可根 据自己的需求部署多个网关节点集群，以达到多个数
 据中心的容灾能力，这样部署就已经能保障网关的正常可用。如图所示：
-![scg集群部署.png](..%2Fimg%2Fscg%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.png)
+![scg集群部署.png](..%2F..%2Fimg%2Fscg%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.png)
 
 ### 负载均衡的能力：
 CSB2.0云原生网关实现了一套控制台即可对不同实例下的网关节点进行配置下发，并且同一个实例内的所有网关节点都是生效的。通常一个网关节点部署在一个服务器上，节点通过监听中间件(Redis、Nacos等)中的配置信息以此来获取、更新broker中的配置。此处的负载均衡是指broker节点对于下游服务的不同节点进行
 请求转发，例如服务service1的请求会依次分发到服务下的节点node1、node2 和node3。如图所示：
-![scg-lb.png](..%2Fimg%2Fscg-lb.png)
+![scg-lb.png](..%2F..%2Fimg%2Fscg-lb.png)
 
 ### 健康检查
 请求到达服务节点前，尽管已经做了两层的负载，即请求到达云容器平台的负载均衡器以及broker对下游服务节点的负载。但是不管是网关broker节点，还是下游的某个节点发生了故障,请求还是有可能继续打到该节点上，这时候服务的最终结果仍是不可用。解决的方案是把所有有问题的的节点，包括broker节点、下游服务节点移出SLB的范围即可。因此需要解决的问题是如何知道broker节点以及下游服务的node节点是否正常？解决方案是对broker节点以及服务下游node节点进行健康检查：
@@ -82,7 +82,7 @@ CSB2.0云原生网关依托于Kubernetes云容器编排平台进行部署，节�
 3、触发熔断的请求阈值
 降级策略目前支持Mock的形式返回响应参数，包括响应码、响应头、响应体。
 当发生熔断后，判断请求是否恢复正常的条件，若连续请求成功次数达标，则恢复转发，服务自动转入监控期；否则，继续进入熔断期。如此反复。如下图：
-![熔断.png](..%2Fimg%2F%E7%86%94%E6%96%AD.png)
+![熔断.png](..%2F..%2Fimg%2F%E7%86%94%E6%96%AD.png)
 
 ### 接口重试
 虽然有很多机制保障接口的可访问，但是一个请求报错的原因有很多，偶然一次报错不一定是服务不可用，最简单的，第一次不行，应该再访问一次或几次，以确定结果。 请求重试可以说是网关对接口转发的基本要求，每个接口都应该可以设置重试次数。当请求失败后，网关应立即再次请求，直到拿到正常返回，或是达到重试阈值，再将结果返回给客户端。
@@ -101,7 +101,7 @@ CSB2.0云原生网关依托于Kubernetes云容器编排平台进行部署，节�
 2、实现自定义路由的核心类
 Spring Cloud Gateway 核心加载机制如图所示：
 
-![scg配置监听.png](..%2Fimg%2Fscg%E9%85%8D%E7%BD%AE%E7%9B%91%E5%90%AC.png)
+![scg配置监听.png](..%2F..%2Fimg%2Fscg%E9%85%8D%E7%BD%AE%E7%9B%91%E5%90%AC.png)
 
 ## CSB2.0云原生网关如何实现插件热插拔
 
@@ -116,12 +116,12 @@ CSB2.0需要Console对Broker进行接口调试，但在专有云网络下存在�
 
 本方案提出一个设计，由【用户区】的 broker 主动建立 TCP 长连接到【管控区】的 console，借助于 TCP 双工通信的特性，console 可以通过持续维护 broker 的连接，从而完成与 broker 的通信。
 整体设计如图所示：
-![接口调试整体方案.png](..%2Fimg%2F%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95%E6%95%B4%E4%BD%93%E6%96%B9%E6%A1%88.png)
+![接口调试整体方案.png](..%2F..%2Fimg%2F%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95%E6%95%B4%E4%BD%93%E6%96%B9%E6%A1%88.png)
 
 ### VIP连接方案
 长连接实现方案使用 WebSocket实现 console 与 broker 的交互。但是在实际部署中，【用户区】的 broker 经过了一个 VIP 连接到【管控区】的 console，由于 VIP 随机负载均衡的特性的，可能会出现部分 console 没有持有长连接的问题，当这些 console 节点接受请求之后，将会无法处理。如图所示：
 
-![scg-vip问题.png](..%2Fimg%2Fscg-vip%E9%97%AE%E9%A2%98.png)
+![scg-vip问题.png](..%2F..%2Fimg%2Fscg-vip%E9%97%AE%E9%A2%98.png)
 
 为了解决上述问题，如下图引入心跳机制。broker 通过定时任务向 VIP 发送建连请求，console 在接受到请求之后，需要返回 console ip，broker 在接收到 console ip 的响应之后，
 需要比对 console ip 与本地的 console ip 缓存池，从而判断是否是一条新的连接
@@ -130,12 +130,12 @@ CSB2.0需要Console对Broker进行接口调试，但在专有云网络下存在�
 - 轮询机制兼容了 console 动态扩缩容的场景
 - 轮询机制兼容了连接断开的场景
 
-![接口调试最终设计.png](..%2Fimg%2F%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95%E6%9C%80%E7%BB%88%E8%AE%BE%E8%AE%A1.png)
+![接口调试最终设计.png](..%2F..%2Fimg%2F%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95%E6%9C%80%E7%BB%88%E8%AE%BE%E8%AE%A1.png)
 
 ## CSB2.0云原生网关如何实现多协议转换
 在SpringCloud-Gateway网关中扩展多种协议如：Grpc、WebService、Dubbo、HSF等协议，在此之前我们需要分析一下SpringCloud-Gateway filter机制。springcloud-gateway基于过滤器实现， 分为pre和post两种类型的过滤器，分别处理前置逻辑和后置逻辑。客户端将http请求到gateway，请求经过前置过滤器处理后转发到具体到业务服务中，收到业务服务的相应
 后，响应将通过后置过滤器处理后返回客户端，其中过滤器的处理顺序按照order排序（后置处理器倒序排序）;
-![scg-filter流程.png](..%2Fimg%2Fscg-filter%E6%B5%81%E7%A8%8B.png)
+![scg-filter流程.png](..%2F..%2Fimg%2Fscg-filter%E6%B5%81%E7%A8%8B.png)
 
 对于http-http的请求代理来说，NettyRoutingFilter是作为filter chain的最后一个pre filter，它负责将请求转发到具体的业务服务中
 ```java
@@ -161,7 +161,7 @@ public class NettyWriteResponseFilter implements GlobalFilter, Ordered {
 ```
 因此要实现http作为入口协议的多协议的泛化调用，我们需要在pre filter chain中添加一个filter代替NettyRoutingFilter，负责将http编码为其他协议的请求，同时在post filter chain中添加一个filter代替NettyWriteResponseFilter，负责将其他协议的响应转换为http响应。
 以dubbo的泛化调用为例，实现如下图所示：
-![scg泛化调用.png](..%2Fimg%2Fscg%E6%B3%9B%E5%8C%96%E8%B0%83%E7%94%A8.png)
+![scg泛化调用.png](..%2F..%2Fimg%2Fscg%E6%B3%9B%E5%8C%96%E8%B0%83%E7%94%A8.png)
 
 ## 对企业级微服务网关的一些思考与未来的发展方向
 我们可以看到Spring Cloud Gateway可以很好地与其背后的Spring 社区和 SpringCloud 微服务体系有着很好的适配和集成，这与 Java 语言流行的原因如出一辙。如果一个企业主打的技术栈是Java 体系，那么基于SpringBoot/ SpringCloud 开发微服务，选型 SpringCloud Gateway 作为微服务网关，会有着得天独厚的优势。
