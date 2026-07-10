@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>我的灿烂人生</title>
+  
+  
+  <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://xianyanglin.github.io/"/>
+  <updated>2026-07-10T06:21:19.456Z</updated>
+  <id>https://xianyanglin.github.io/</id>
+  
+  <author>
+    <name>xyl</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年不太顺利地过渡</title>
+    <link href="https://xianyanglin.github.io/2023/12/31/live/2023-nian-bu-tai-shun-li-di-guo-du/"/>
+    <id>https://xianyanglin.github.io/2023/12/31/live/2023-nian-bu-tai-shun-li-di-guo-du/</id>
+    <published>2023-12-30T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.456Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://xianyanglin.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="2023" scheme="https://xianyanglin.github.io/tags/2023/"/>
+    
+    <category term="回顾总结" scheme="https://xianyanglin.github.io/tags/%E5%9B%9E%E9%A1%BE%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网关金融场景下的大规模实践</title>
+    <link href="https://xianyanglin.github.io/2023/12/30/funcdesign/wang-guan-jin-rong-chang-jing-xia-de-da-gui-mo-shi-jian/"/>
+    <id>https://xianyanglin.github.io/2023/12/30/funcdesign/wang-guan-jin-rong-chang-jing-xia-de-da-gui-mo-shi-jian/</id>
+    <published>2023-12-29T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="Envoy" scheme="https://xianyanglin.github.io/tags/Envoy/"/>
+    
+    <category term="金融" scheme="https://xianyanglin.github.io/tags/%E9%87%91%E8%9E%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网关可观测性建设-(Envoy篇)</title>
+    <link href="https://xianyanglin.github.io/2023/09/08/funcdesign/wang-guan-ke-guan-ce-xing-jian-she-envoy-pian-zhang/"/>
+    <id>https://xianyanglin.github.io/2023/09/08/funcdesign/wang-guan-ke-guan-ce-xing-jian-she-envoy-pian-zhang/</id>
+    <published>2023-09-07T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.448Z</updated>
+    
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="Envoy" scheme="https://xianyanglin.github.io/tags/Envoy/"/>
+    
+    <category term="可观测性" scheme="https://xianyanglin.github.io/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>全能力网关建设</title>
+    <link href="https://xianyanglin.github.io/2023/08/25/funcdesign/quan-neng-li-wang-guan-jian-she/"/>
+    <id>https://xianyanglin.github.io/2023/08/25/funcdesign/quan-neng-li-wang-guan-jian-she/</id>
+    <published>2023-08-24T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.442Z</updated>
+    
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="Envoy" scheme="https://xianyanglin.github.io/tags/Envoy/"/>
+    
+    <category term="Hango" scheme="https://xianyanglin.github.io/tags/Hango/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloudGateway云上的设计与改造</title>
+    <link href="https://xianyanglin.github.io/2023/07/14/funcdesign/springcloudgateway-yun-shang-de-she-ji-yu-gai-zao/"/>
+    <id>https://xianyanglin.github.io/2023/07/14/funcdesign/springcloudgateway-yun-shang-de-she-ji-yu-gai-zao/</id>
+    <published>2023-07-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.425Z</updated>
+    
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="SpringCloudGateway" scheme="https://xianyanglin.github.io/tags/SpringCloudGateway/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Jmeter的Operator改造</title>
+    <link href="https://xianyanglin.github.io/2023/07/14/funcdesign/ji-yu-jmeter-de-operator-gai-zao/"/>
+    <id>https://xianyanglin.github.io/2023/07/14/funcdesign/ji-yu-jmeter-de-operator-gai-zao/</id>
+    <published>2023-07-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.445Z</updated>
+    
+    
+    
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/categories/Kubernetes/"/>
+    
+    
+    <category term="Jmeter" scheme="https://xianyanglin.github.io/tags/Jmeter/"/>
+    
+    <category term="Operator" scheme="https://xianyanglin.github.io/tags/Operator/"/>
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开源项目Hango网关项目设计与实践</title>
+    <link href="https://xianyanglin.github.io/2023/07/14/funcdesign/kai-yuan-xiang-mu-hango-wang-guan-xiang-mu-she-ji-yu-shi-jian/"/>
+    <id>https://xianyanglin.github.io/2023/07/14/funcdesign/kai-yuan-xiang-mu-hango-wang-guan-xiang-mu-she-ji-yu-shi-jian/</id>
+    <published>2023-07-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.447Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Hango</summary>
+        
+      
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="Envoy" scheme="https://xianyanglin.github.io/tags/Envoy/"/>
+    
+    <category term="网易" scheme="https://xianyanglin.github.io/tags/%E7%BD%91%E6%98%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网关两地三中心的实践与总结</title>
+    <link href="https://xianyanglin.github.io/2023/05/16/funcdesign/wang-guan-liang-di-san-zhong-xin-de-shi-jian-yu-zong-jie/"/>
+    <id>https://xianyanglin.github.io/2023/05/16/funcdesign/wang-guan-liang-di-san-zhong-xin-de-shi-jian-yu-zong-jie/</id>
+    <published>2023-05-15T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.448Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;轻舟网关两地三中心整体技术方案&quot;&gt;&lt;a href=&quot;#轻舟网关两地三中心整体技术方案&quot; class=&quot;headerlink&quot; title=&quot;轻舟网关两地三中心整体技术方案&quot;&gt;&lt;/a&gt;轻舟网关两地三中心整体技术方案&lt;/h1&gt;&lt;h2 id=&quot;背景概述&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="两地三中心" scheme="https://xianyanglin.github.io/tags/%E4%B8%A4%E5%9C%B0%E4%B8%89%E4%B8%AD%E5%BF%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于Hango网关中gportal和api-plane组件合并实施方案</title>
+    <link href="https://xianyanglin.github.io/2023/03/12/funcdesign/guan-yu-hango-wang-guan-zhong-gportal-he-api-plane-zu-jian-he-bing-shi-shi-fang-an/"/>
+    <id>https://xianyanglin.github.io/2023/03/12/funcdesign/guan-yu-hango-wang-guan-zhong-gportal-he-api-plane-zu-jian-he-bing-shi-shi-fang-an/</id>
+    <published>2023-03-11T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.444Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;组件合并实施方案&quot;&gt;&lt;a href=&quot;#组件合并实施方案&quot; class=&quot;headerlink&quot; title=&quot;组件合并实施方案&quot;&gt;&lt;/a&gt;组件合并实施方案&lt;/h1&gt;&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Hango" scheme="https://xianyanglin.github.io/categories/Hango/"/>
+    
+    
+    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="Hango" scheme="https://xianyanglin.github.io/tags/Hango/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>探索分布式事务解决方案以及实现原理</title>
+    <link href="https://xianyanglin.github.io/2023/01/14/funcdesign/tan-suo-fen-bu-shi-shi-wu-jie-jue-fang-an-yi-ji-shi-xian-yuan-li/"/>
+    <id>https://xianyanglin.github.io/2023/01/14/funcdesign/tan-suo-fen-bu-shi-shi-wu-jie-jue-fang-an-yi-ji-shi-xian-yuan-li/</id>
+    <published>2023-01-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.448Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="分布式事务" scheme="https://xianyanglin.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+    <category term="分布式事务" scheme="https://xianyanglin.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloudGateway功能原理以及产品化实践</title>
+    <link href="https://xianyanglin.github.io/2022/06/11/funcdesign/springcloudgateway-gong-neng-yuan-li-yi-ji-chan-pin-shi-jian/"/>
+    <id>https://xianyanglin.github.io/2022/06/11/funcdesign/springcloudgateway-gong-neng-yuan-li-yi-ji-chan-pin-shi-jian/</id>
+    <published>2022-06-10T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.425Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringCloudGateway" scheme="https://xianyanglin.github.io/categories/SpringCloudGateway/"/>
+    
+    
+    <category term="SpringCloudGateway" scheme="https://xianyanglin.github.io/tags/SpringCloudGateway/"/>
+    
+    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网关可观测性建设-(SpringCloudGateway篇)</title>
+    <link href="https://xianyanglin.github.io/2022/05/14/funcdesign/wang-guan-ke-guan-ce-xing-jian-she-springcloudgateway-pian-zhang/"/>
+    <id>https://xianyanglin.github.io/2022/05/14/funcdesign/wang-guan-ke-guan-ce-xing-jian-she-springcloudgateway-pian-zhang/</id>
+    <published>2022-05-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.448Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;可观测性体系的建设，可以说是很多开源产品距离企业级使用的距离，SpringCloud Gateway</summary>
+        
+      
+    
+    
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="SpringCloudGateway" scheme="https://xianyanglin.github.io/tags/SpringCloudGateway/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="可观测性" scheme="https://xianyanglin.github.io/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务网格</title>
+    <link href="https://xianyanglin.github.io/2022/03/24/servicemesh/fu-wu-wang-ge/"/>
+    <id>https://xianyanglin.github.io/2022/03/24/servicemesh/fu-wu-wang-ge/</id>
+    <published>2022-03-24T08:11:00.000Z</published>
+    <updated>2026-07-10T06:21:19.481Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;什么是服务网格？&quot;&gt;&lt;a href=&quot;#什么是服务网格？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="ServiceMesh" scheme="https://xianyanglin.github.io/categories/ServiceMesh/"/>
+    
+    
+    <category term="ServiceMesh" scheme="https://xianyanglin.github.io/tags/ServiceMesh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes的设计解读</title>
+    <link href="https://xianyanglin.github.io/2022/03/20/kubernetes/kubernetes-de-she-ji-jie-du/"/>
+    <id>https://xianyanglin.github.io/2022/03/20/kubernetes/kubernetes-de-she-ji-jie-du/</id>
+    <published>2022-03-20T04:31:00.000Z</published>
+    <updated>2026-07-10T06:21:19.455Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;pod-设计解读&quot;&gt;&lt;a href=&quot;#pod-设计解读&quot; class=&quot;headerlink&quot; title=&quot;pod 设计解读&quot;&gt;&lt;/a&gt;pod</summary>
+        
+      
+    
+    
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/categories/Kubernetes/"/>
+    
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka核心技术</title>
+    <link href="https://xianyanglin.github.io/2022/03/20/kafka/kafka-he-xin-ji-zhu/"/>
+    <id>https://xianyanglin.github.io/2022/03/20/kafka/kafka-he-xin-ji-zhu/</id>
+    <published>2022-03-20T04:06:00.000Z</published>
+    <updated>2026-07-10T06:21:19.453Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;生产者消息分区机制原理剖析&quot;&gt;&lt;a href=&quot;#生产者消息分区机制原理剖析&quot; class=&quot;headerlink&quot; title=&quot;生产者消息分区机制原理剖析&quot;&gt;&lt;/a&gt;生产者消息分区机制原理剖析&lt;/h3&gt;&lt;p&gt;Kafka的三级结构：主题 - 分区 -</summary>
+        
+      
+    
+    
+    
+    <category term="kafka" scheme="https://xianyanglin.github.io/categories/kafka/"/>
+    
+    
+    <category term="kafka" scheme="https://xianyanglin.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用的二次编码方式</title>
+    <link href="https://xianyanglin.github.io/2022/03/14/netty/chang-yong-de-er-ci-bian-jie-ma-fang-shi/"/>
+    <id>https://xianyanglin.github.io/2022/03/14/netty/chang-yong-de-er-ci-bian-jie-ma-fang-shi/</id>
+    <published>2022-03-14T15:25:00.000Z</published>
+    <updated>2026-07-10T06:21:19.479Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;为什么需要二次解码&quot;&gt;&lt;a href=&quot;#为什么需要二次解码&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编写网络应用程序基本步骤</title>
+    <link href="https://xianyanglin.github.io/2022/03/14/netty/bian-xie-wang-luo-ying-yong-cheng-xu-ji-ben-bu-zou/"/>
+    <id>https://xianyanglin.github.io/2022/03/14/netty/bian-xie-wang-luo-ying-yong-cheng-xu-ji-ben-bu-zou/</id>
+    <published>2022-03-13T16:25:00.000Z</published>
+    <updated>2026-07-10T06:21:19.479Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;编写网络应用程序基本步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;需求分析&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定义业务数据结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实现业务逻辑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择传输协议&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定义传输信息结构&lt;/p</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty如何玩转内存使用</title>
+    <link href="https://xianyanglin.github.io/2022/03/14/netty/netty-ru-he-wan-zhuan-nei-cun-shi-yong/"/>
+    <id>https://xianyanglin.github.io/2022/03/14/netty/netty-ru-he-wan-zhuan-nei-cun-shi-yong/</id>
+    <published>2022-03-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.477Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Netty如何玩转内存使用&quot;&gt;&lt;a href=&quot;#Netty如何玩转内存使用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP粘包、半包 Netty全搞定</title>
+    <link href="https://xianyanglin.github.io/2022/03/13/netty/tcp-nian-bao-ban-bao-netty-quan-gao-ding/"/>
+    <id>https://xianyanglin.github.io/2022/03/13/netty/tcp-nian-bao-ban-bao-netty-quan-gao-ding/</id>
+    <published>2022-03-13T15:59:00.000Z</published>
+    <updated>2026-07-10T06:21:19.467Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1、什么是粘包和半包？&lt;/p&gt;
+&lt;p&gt;粘包：一次接收全部消息&lt;/p&gt;
+&lt;p&gt;半包：分多次接收到多个不完整的消息&lt;/p&gt;
+&lt;p&gt;2、为什么TCP应用会出现粘包和半包现象&lt;/p&gt;
+&lt;p&gt;粘包的主要原因：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发送方每次写入数据 &amp;lt;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty三种IO的支持</title>
+    <link href="https://xianyanglin.github.io/2022/03/13/netty/netty-san-chong-io-de-zhi-chi/"/>
+    <id>https://xianyanglin.github.io/2022/03/13/netty/netty-san-chong-io-de-zhi-chi/</id>
+    <published>2022-03-13T15:25:00.000Z</published>
+    <updated>2026-07-10T06:21:19.468Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;什么是经典的三种I-x2F-O模式？&quot;&gt;&lt;a href=&quot;#什么是经典的三种I-x2F-O模式？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
+    
+  </entry>
+  
+</feed>
