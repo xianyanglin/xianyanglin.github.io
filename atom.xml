@@ -6,7 +6,7 @@
   <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
   
   <link href="https://xianyanglin.github.io/"/>
-  <updated>2026-07-14T08:26:23.419Z</updated>
+  <updated>2026-07-14T08:27:36.613Z</updated>
   <id>https://xianyanglin.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://xianyanglin.github.io/2026/07/14/live/2026-dang-hang-xing-jie-shu-yu-ce-hui/"/>
-    <id>https://xianyanglin.github.io/2026/07/14/live/2026-dang-hang-xing-jie-shu-yu-ce-hui/</id>
-    <published>2026-07-14T08:22:37.289Z</published>
-    <updated>2026-07-14T08:26:23.419Z</updated>
+    <title>情感思考：当航行结束于测绘</title>
+    <link href="https://xianyanglin.github.io/2026/05/01/live/2026-dang-hang-xing-jie-shu-yu-ce-hui/"/>
+    <id>https://xianyanglin.github.io/2026/05/01/live/2026-dang-hang-xing-jie-shu-yu-ce-hui/</id>
+    <published>2026-04-30T16:01:00.000Z</published>
+    <updated>2026-07-14T08:27:36.613Z</updated>
     
     
       
@@ -34,6 +34,12 @@
     
     
     
+    <category term="生活" scheme="https://xianyanglin.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="2026" scheme="https://xianyanglin.github.io/tags/2026/"/>
+    
+    <category term="情感" scheme="https://xianyanglin.github.io/tags/%E6%83%85%E6%84%9F/"/>
     
   </entry>
   
@@ -209,27 +215,6 @@
   </entry>
   
   <entry>
-    <title>基于Jmeter的Operator改造</title>
-    <link href="https://xianyanglin.github.io/2023/07/14/funcdesign/ji-yu-jmeter-de-operator-gai-zao/"/>
-    <id>https://xianyanglin.github.io/2023/07/14/funcdesign/ji-yu-jmeter-de-operator-gai-zao/</id>
-    <published>2023-07-13T16:01:00.000Z</published>
-    <updated>2026-07-10T06:21:19.445Z</updated>
-    
-    
-    
-    
-    <category term="Kubernetes" scheme="https://xianyanglin.github.io/categories/Kubernetes/"/>
-    
-    
-    <category term="Jmeter" scheme="https://xianyanglin.github.io/tags/Jmeter/"/>
-    
-    <category term="Operator" scheme="https://xianyanglin.github.io/tags/Operator/"/>
-    
-    <category term="Kubernetes" scheme="https://xianyanglin.github.io/tags/Kubernetes/"/>
-    
-  </entry>
-  
-  <entry>
     <title>开源项目Hango网关项目设计与实践</title>
     <link href="https://xianyanglin.github.io/2023/07/14/funcdesign/kai-yuan-xiang-mu-hango-wang-guan-xiang-mu-she-ji-yu-shi-jian/"/>
     <id>https://xianyanglin.github.io/2023/07/14/funcdesign/kai-yuan-xiang-mu-hango-wang-guan-xiang-mu-she-ji-yu-shi-jian/</id>
@@ -255,6 +240,27 @@
     <category term="Envoy" scheme="https://xianyanglin.github.io/tags/Envoy/"/>
     
     <category term="网易" scheme="https://xianyanglin.github.io/tags/%E7%BD%91%E6%98%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Jmeter的Operator改造</title>
+    <link href="https://xianyanglin.github.io/2023/07/14/funcdesign/ji-yu-jmeter-de-operator-gai-zao/"/>
+    <id>https://xianyanglin.github.io/2023/07/14/funcdesign/ji-yu-jmeter-de-operator-gai-zao/</id>
+    <published>2023-07-13T16:01:00.000Z</published>
+    <updated>2026-07-10T06:21:19.445Z</updated>
+    
+    
+    
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/categories/Kubernetes/"/>
+    
+    
+    <category term="Jmeter" scheme="https://xianyanglin.github.io/tags/Jmeter/"/>
+    
+    <category term="Operator" scheme="https://xianyanglin.github.io/tags/Operator/"/>
+    
+    <category term="Kubernetes" scheme="https://xianyanglin.github.io/tags/Kubernetes/"/>
     
   </entry>
   
@@ -306,9 +312,9 @@
     <category term="Hango" scheme="https://xianyanglin.github.io/categories/Hango/"/>
     
     
-    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
-    
     <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
     
     <category term="Hango" scheme="https://xianyanglin.github.io/tags/Hango/"/>
     
@@ -362,9 +368,9 @@
     
     <category term="SpringCloudGateway" scheme="https://xianyanglin.github.io/tags/SpringCloudGateway/"/>
     
-    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
-    
     <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
+    
+    <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
     
   </entry>
   
