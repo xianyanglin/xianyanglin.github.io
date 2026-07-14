@@ -6,7 +6,7 @@
   <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
   
   <link href="https://xianyanglin.github.io/"/>
-  <updated>2026-07-14T08:07:30.559Z</updated>
+  <updated>2026-07-14T08:26:23.419Z</updated>
   <id>https://xianyanglin.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://xianyanglin.github.io/2026/07/14/live/2026-dang-hang-xing-jie-shu-yu-ce-hui/"/>
+    <id>https://xianyanglin.github.io/2026/07/14/live/2026-dang-hang-xing-jie-shu-yu-ce-hui/</id>
+    <published>2026-07-14T08:22:37.289Z</published>
+    <updated>2026-07-14T08:26:23.419Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;2026情感思考：当航行结束于测绘&quot;&gt;&lt;a href=&quot;#2026情感思考：当航行结束于测绘&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2025年重新定义的生活</title>
@@ -499,31 +520,6 @@
 &lt;li&gt;&lt;p&gt;选择传输协议&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;定义传输信息结构&lt;/p</summary>
-        
-      
-    
-    
-    
-    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
-    
-    
-    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>netty如何玩转内存使用</title>
-    <link href="https://xianyanglin.github.io/2022/03/14/netty/netty-ru-he-wan-zhuan-nei-cun-shi-yong/"/>
-    <id>https://xianyanglin.github.io/2022/03/14/netty/netty-ru-he-wan-zhuan-nei-cun-shi-yong/</id>
-    <published>2022-03-13T16:01:00.000Z</published>
-    <updated>2026-07-10T06:21:19.477Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;Netty如何玩转内存使用&quot;&gt;&lt;a href=&quot;#Netty如何玩转内存使用&quot; class=&quot;headerlink&quot;</summary>
         
       
     
