@@ -6,7 +6,7 @@
   <link href="https://xianyanglin.github.io/atom.xml" rel="self"/>
   
   <link href="https://xianyanglin.github.io/"/>
-  <updated>2026-07-10T06:21:19.456Z</updated>
+  <updated>2026-07-14T08:07:30.559Z</updated>
   <id>https://xianyanglin.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2025年重新定义的生活</title>
+    <link href="https://xianyanglin.github.io/2025/12/31/live/2025-nian-chong-xin-ding-yi-de-sheng-huo/"/>
+    <id>https://xianyanglin.github.io/2025/12/31/live/2025-nian-chong-xin-ding-yi-de-sheng-huo/</id>
+    <published>2025-12-30T16:01:00.000Z</published>
+    <updated>2026-07-14T08:07:30.559Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;新的开始&quot;&gt;&lt;a href=&quot;#新的开始&quot; class=&quot;headerlink&quot; title=&quot;新的开始&quot;&gt;&lt;/a&gt;新的开始&lt;/h2&gt;&lt;p&gt;我一位在美国留学多年的朋友终于回国，并创立了自己的品牌 ——</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://xianyanglin.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="回顾总结" scheme="https://xianyanglin.github.io/tags/%E5%9B%9E%E9%A1%BE%E6%80%BB%E7%BB%93/"/>
+    
+    <category term="2025" scheme="https://xianyanglin.github.io/tags/2025/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2024年尝试探索自己的能力边界</title>
+    <link href="https://xianyanglin.github.io/2024/12/31/live/2024-nian-chang-shi-tan-suo-zi-ji-de-neng-li-bian-jie/"/>
+    <id>https://xianyanglin.github.io/2024/12/31/live/2024-nian-chang-shi-tan-suo-zi-ji-de-neng-li-bian-jie/</id>
+    <published>2024-12-30T16:01:00.000Z</published>
+    <updated>2026-07-14T07:37:48.824Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://xianyanglin.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="回顾总结" scheme="https://xianyanglin.github.io/tags/%E5%9B%9E%E9%A1%BE%E6%80%BB%E7%BB%93/"/>
+    
+    <category term="2024" scheme="https://xianyanglin.github.io/tags/2024/"/>
+    
+  </entry>
   
   <entry>
     <title>2023年不太顺利地过渡</title>
@@ -231,9 +285,9 @@
     <category term="Hango" scheme="https://xianyanglin.github.io/categories/Hango/"/>
     
     
-    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
-    
     <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
     
     <category term="Hango" scheme="https://xianyanglin.github.io/tags/Hango/"/>
     
@@ -287,9 +341,9 @@
     
     <category term="SpringCloudGateway" scheme="https://xianyanglin.github.io/tags/SpringCloudGateway/"/>
     
-    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
-    
     <category term="云原生网关" scheme="https://xianyanglin.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3/"/>
+    
+    <category term="SCG" scheme="https://xianyanglin.github.io/tags/SCG/"/>
     
   </entry>
   
@@ -470,62 +524,6 @@
         
         
     <summary type="html">&lt;h3 id=&quot;Netty如何玩转内存使用&quot;&gt;&lt;a href=&quot;#Netty如何玩转内存使用&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
-    
-    
-    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP粘包、半包 Netty全搞定</title>
-    <link href="https://xianyanglin.github.io/2022/03/13/netty/tcp-nian-bao-ban-bao-netty-quan-gao-ding/"/>
-    <id>https://xianyanglin.github.io/2022/03/13/netty/tcp-nian-bao-ban-bao-netty-quan-gao-ding/</id>
-    <published>2022-03-13T15:59:00.000Z</published>
-    <updated>2026-07-10T06:21:19.467Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;1、什么是粘包和半包？&lt;/p&gt;
-&lt;p&gt;粘包：一次接收全部消息&lt;/p&gt;
-&lt;p&gt;半包：分多次接收到多个不完整的消息&lt;/p&gt;
-&lt;p&gt;2、为什么TCP应用会出现粘包和半包现象&lt;/p&gt;
-&lt;p&gt;粘包的主要原因：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;发送方每次写入数据 &amp;lt;</summary>
-        
-      
-    
-    
-    
-    <category term="Netty" scheme="https://xianyanglin.github.io/categories/Netty/"/>
-    
-    
-    <category term="Netty" scheme="https://xianyanglin.github.io/tags/Netty/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>netty三种IO的支持</title>
-    <link href="https://xianyanglin.github.io/2022/03/13/netty/netty-san-chong-io-de-zhi-chi/"/>
-    <id>https://xianyanglin.github.io/2022/03/13/netty/netty-san-chong-io-de-zhi-chi/</id>
-    <published>2022-03-13T15:25:00.000Z</published>
-    <updated>2026-07-10T06:21:19.468Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;什么是经典的三种I-x2F-O模式？&quot;&gt;&lt;a href=&quot;#什么是经典的三种I-x2F-O模式？&quot; class=&quot;headerlink&quot;</summary>
         
       
     
